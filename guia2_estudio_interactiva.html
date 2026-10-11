@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Guía de Estudio Interactiva · Módulo 2: IA Aplicada: Crear, Investigar y Trabajar con tus Propios Datos | Instructor: Marcos Cruz A.</title>
+  <meta name="description" content="Guía interactiva avanzada y responsive del Módulo 2 de IA: Context Engineering, Dirección de Arte Visual, Video Temporal, Grounding Factual en NotebookLM e Inferencia Local Soberana con LM Studio.">
+  <meta name="author" content="Marcos Cruz A.">
+
+  <!-- Tipografía Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos del Módulo 2 -->
+  <link rel="stylesheet" href="guia_estudio_modulo2.css">
+</head>
+
+<body>
+
+  <!-- ====================================================================
+       STICKY PROGRESS & NAV HEADER
+       ==================================================================== -->
+  <header class="progress-sticky">
+    <div class="progress-container-inner">
+      <div class="progress-top-row">
+        <div class="brand-badge-group">
+          <a href="index.html" class="nav-module-link" title="Volver al Portal de Guías">🏠 Portal</a>
+          <span class="badge-tag">MÓDULO 2</span>
+          <span class="progress-title">Guía de Estudio del Alumno</span>
+          <a href="guia1_estudio_interactiva.html" class="nav-module-link" title="Ir a la Guía del Módulo 1">⬅ Mód. 1</a>
+        </div>
+        <div class="progress-stats">
+          <div class="stat-item">
+            <span>Explorados:</span>
+            <strong id="statExplored">0</strong>/<span id="statTotal">0</span>
+          </div>
+          <div class="stat-item">
+            <span>Quiz:</span>
+            <strong id="statQuiz">0</strong>%
+          </div>
+          <div class="stat-item">
+            <span>Checklist:</span>
+            <strong id="statChecklist">0</strong>%
+          </div>
+        </div>
+      </div>
+      <div class="progress-bar-outer">
+        <div class="progress-bar-inner" id="progressBar"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Indicadores de Navegación Lateral (Desktop) -->
+  <nav class="nav-dots" id="navDots" aria-label="Navegación rápida de secciones"></nav>
+
+  <!-- ====================================================================
+       MAIN WRAPPER
+       ==================================================================== -->
+  <main class="wrap">
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+      <div class="hero-meta-row">
+        <span class="hero-tag">⚡ Cuaderno de Estudio del Alumno</span>
+        <span class="hero-author-badge">Instructor y Autor: <strong>Marcos Cruz A.</strong> · AI Solutions Specialist</span>
+        <span class="hero-tag" style="background: rgba(154,109,255,0.12); color: var(--accent-purple); border-color: rgba(154,109,255,0.25);">
+          🛡️ Propiedad Intelectual Registrada
+        </span>
+      </div>
+
+      <h1 class="hero-title">
+        Guía de Estudio: <span class="gradient-text">Conceptos Clave & Repaso Práctico</span> (Módulo 2)
+      </h1>
+
+      <p class="hero-lead">
+        Material de trabajo autónomo para el estudiante. Domina los fundamentos aplicados del Módulo 2: <strong>especificación de contexto de trabajo</strong>, <strong>dirección de arte visual y cinemática</strong>, <strong>grounding fáctico estricto en fuentes reales</strong> con <em>NotebookLM</em> y <strong>ejecución de modelos locales soberanos</strong> con <em>LM Studio</em>.
+      </p>
+
+      <!-- Portada Visual del Módulo -->
+      <div class="hero-media-card">
+        <img src="assets/modulo2_cover.jpg" alt="Canvas multimodal y analítico de IA Aplicada con grafos y modelos locales" class="hero-cover-img" loading="eager">
+        <div class="hero-card-footer">
+          <div class="hero-caption">
+            <strong>Entorno de Estudio Phoenix:</strong> Canvas analítico, índice de fuentes documentales y motor local soberano.
+          </div>
+          <div class="hero-stats-pills">
+            <span class="mini-pill">📖 Cuaderno de Estudio</span>
+            <span class="mini-pill">📁 Caso Unificado Phoenix</span>
+            <span class="mini-pill">💻 100% Offline Capable</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cuadro de Instrucciones Didácticas -->
+      <div class="guide-instructions">
+        <h3>🧭 Cómo sacar el máximo provecho a este material interactivo</h3>
+        <p>
+          Esta guía no contiene respuestas triviales prefabricadas. Contiene <strong>conceptos nucleares, laboratorios interactivos, simuladores en vivo y misiones de auditoría</strong>. Utilízala en tu PC o en tu celular como tu libreta de operaciones. Cada sección guarda tu avance automáticamente en tu navegador.
+        </p>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         BLOQUE 0: REGLA CERO & GOBERNANZA DE DATOS
+         ==================================================================== -->
+    <section class="block-section" id="s0">
+      <div class="block-head">
+        <span class="block-num">0</span>
+        <h2>La Regla Cero: Gobernanza y Clasificación de Datos</h2>
+      </div>
+      <p class="block-sub">"Datos reales de trabajo NO significa datos confidenciales."</p>
+
+      <div class="concept-box">
+        <span class="ctag">Principio Rector</span>
+        <p>
+          Antes de subir cualquier archivo a una IA en la nube, es mandatorio aplicar un filtro ético y legal estricto. La falta de gobernanza destruye proyectos de IA corporativos antes de iniciar. Clasifica siempre tus insumos en tres niveles:
+        </p>
+      </div>
+
+      <!-- Semáforo de 3 Niveles -->
+      <div class="traffic-light-grid">
+        <div class="traffic-card red">
+          <div class="traffic-head">
+            <span class="traffic-icon">🔴</span>
+            <h4>Rojo: Prohibido en Nube</h4>
+          </div>
+          <p>Secretos industriales, PII (identificaciones, sueldos, historiales médicos), llaves criptográficas y contraseñas.</p>
+          <ul class="traffic-examples-list">
+            <li>⛔ Base de clientes con correos y tarjetas</li>
+            <li>⛔ Código fuente con credenciales .env</li>
+            <li>⛔ Patentes en trámite sin registrar</li>
+          </ul>
+        </div>
+
+        <div class="traffic-card yellow">
+          <div class="traffic-head">
+            <span class="traffic-icon">🟡</span>
+            <h4>Amarillo: Sensible Interno</h4>
+          </div>
+          <p>Procedimientos operativos internos, borradores de estrategia y memorandos técnicos sin PII.</p>
+          <ul class="traffic-examples-list">
+            <li>🔒 Permitido en LM Studio (100% desconectado)</li>
+            <li>🔒 O en nube previo proceso de anonimización rigurosa</li>
+          </ul>
+        </div>
+
+        <div class="traffic-card green">
+          <div class="traffic-head">
+            <span class="traffic-icon">🟢</span>
+            <h4>Verde: Aprobado para Taller</h4>
+          </div>
+          <p>Información pública de la industria, datos sintéticos o el paquete oficial del <strong>Proyecto Phoenix</strong>.</p>
+          <ul class="traffic-examples-list">
+            <li>✅ Minutas con nombres ficticios</li>
+            <li>✅ Especificaciones de arquitectura de prueba</li>
+            <li>✅ Datos libres de derechos y de dominio público</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Mini-Lab Interactivo de Clasificación -->
+      <div class="classifier-lab">
+        <div class="classifier-lab-title">
+          <span>🧪 Mini-Lab de Criterio: Clasifica este activo de datos</span>
+        </div>
+        <div class="classifier-scenario-box">
+          <p class="scenario-text" id="scenarioText">Cargando escenario...</p>
+        </div>
+        <div class="classifier-buttons-row">
+          <button class="btn-classify" data-tier="red">🔴 Clasificar como ROJO</button>
+          <button class="btn-classify" data-tier="yellow">🟡 Clasificar como AMARILLO</button>
+          <button class="btn-classify" data-tier="green">🟢 Clasificar como VERDE</button>
+          <button class="btn-classify" id="btnNextScenario" style="margin-left: auto; border-color: var(--accent-blue);">Siguiente Caso ➡</button>
+        </div>
+        <div class="classifier-feedback" id="scenarioFeedback"></div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         BLOQUE 1: CONTEXT ENGINEERING
+         ==================================================================== -->
+    <section class="block-section" id="s1">
+      <div class="block-head">
+        <span class="block-num">1</span>
+        <h2>Del Prompt al Contexto: Context Engineering</h2>
+      </div>
+      <p class="block-sub">Dejar de pedir favores a la IA y comenzar a especificar trabajo.</p>
+
+      <!-- Asset Técnico Context Engineering -->
+      <div class="block-media-showcase">
+        <div class="media-image-container">
+          <img src="assets/context_engineering.jpg" alt="Context Engineering: El Framework de 8 Eslabones de Especificación" loading="lazy">
+          <span class="media-badge-overlay">Arquitectura de Insumo</span>
+        </div>
+        <div class="media-caption-bar">
+          <span><strong>Context Engineering:</strong> La calidad de la salida es proporcional al rigor de la especificación técnica.</span>
+          <span style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.78rem;">8 ESLABONES</span>
+        </div>
+      </div>
+
+      <div class="concept-box">
+        <span class="ctag">El Cambio de Paradigma</span>
+        <p>
+          El <em>prompting novato</em> escribe frases informales esperando que la máquina adivine el contexto implícito. La <strong>Ingeniería de Contexto</strong> opera como la redacción de un pliego de requerimientos de software: define metas claras, restricciones negativas, perfiles de audiencia y criterios de aceptación medibles.
+        </p>
+      </div>
+
+      <!-- Framework de 8 Eslabones Grid -->
+      <div class="framework-8-grid">
+        <div class="link-item-card">
+          <span class="link-num">01. OBJETIVO</span>
+          <div class="link-title">Propósito de Negocio</div>
+          <p class="link-desc">Qué problema resuelve el entregable y para qué junta o hito se utilizará.</p>
+        </div>
+        <div class="link-item-card">
+          <span class="link-num">02. DATOS</span>
+          <div class="link-title">Insumos Duros</div>
+          <p class="link-desc">Cifras exactas, presupuestos, fechas límites y tablas de referencia no negociables.</p>
+        </div>
+        <div class="link-item-card">
+          <span class="link-num">03. REFERENCIAS</span>
+          <div class="link-title">Nivel de Calidad</div>
+          <p class="link-desc">Estándar de benchmarking: "estilo informe McKinsey o memo de ingeniería Amazon".</p>
+        </div>
+        <div class="link-item-card">
+          <span class="link-num">04. AUDIENCIA</span>
+          <div class="link-title">Perfil del Lector</div>
+          <p class="link-desc">Director Financiero (ROI/riesgos) vs. Líder Técnico (latencias/APIs).</p>
+        </div>
+        <div class="link-item-card">
+          <span class="link-num">05. REGLAS</span>
+          <div class="link-title">Restricciones Negativas</div>
+          <p class="link-desc">Lo que está terminantemente prohibido (--no clichés, no inventar cifras, no preámbulos).</p>
+        </div>
+        <div class="link-item-card">
+          <span class="link-num">06. FORMATO</span>
+          <div class="link-title">Estructura & Estilo</div>
+          <p class="link-desc">Longitud en cuartillas, tablas comparativas, viñetas ejecutivas y tono neutro.</p>
+        </div>
+        <div class="link-item-card">
+          <span class="link-num">07. EJEMPLOS</span>
+          <div class="link-title">Few-Shot Priming</div>
+          <p class="link-desc">Uno o dos fragmentos de muestra para calibrar la voz y el estilo deseado.</p>
+        </div>
+        <div class="link-item-card">
+          <span class="link-num">08. VALIDACIÓN</span>
+          <div class="link-title">Criterio de Aceptación</div>
+          <p class="link-desc">Preguntas de control que el modelo debe auto-verificar antes de concluir.</p>
+        </div>
+      </div>
+
+      <!-- Comparador Diff Interactivo -->
+      <div class="diff-container">
+        <div class="diff-header-tabs">
+          <div class="diff-tab active" data-target="diff-pane-mediocre">❌ Petición Novata (Sin Contexto)</div>
+          <div class="diff-tab" data-target="diff-pane-pro">✅ Especificación Profesional (8 Eslabones)</div>
+        </div>
+
+        <div class="diff-pane active" id="diff-pane-mediocre">
+          <div class="code-box" id="codeMediocre">
+            <span class="badge-mediocre">MEDIOCRE</span>
+"Hazme un resumen del Proyecto Phoenix para mandárselo a mi jefe por correo."
+          </div>
+          <p style="font-size: 0.85rem; color: var(--accent-rose); margin: 10px 0 0;">
+            ⚠️ <strong>Por qué falla:</strong> El modelo inventa fechas ficticias, utiliza adjetivos grandilocuentes ("es un proyecto revolucionario y maravilloso") y no aporta ningún valor para la toma de decisiones ejecutiva.
+          </p>
+        </div>
+
+        <div class="diff-pane" id="diff-pane-pro">
+          <div class="code-box" id="codePro">
+            <span class="badge-pro">PRO 8 ESLABONES</span>
+Actúa como Consultor Senior de Estrategia Tecnológica para el Directorio de Retail.
+
+[OBJETIVO]
+Genera un Memorando Ejecutivo de 1 cuartilla resumiendo el estado crítico del Proyecto Phoenix.
+
+[DATOS DUROS]
+- Presupuesto aprobado: $120,000 USD (Minuta Q3).
+- Fecha comprometida en acta: 15 de noviembre.
+- Cronograma de ingeniería: Sprints de prueba programados hasta el 10 de diciembre.
+
+[AUDIENCIA]
+Comité de Operaciones y Director Financiero (enfocados en gobernanza de riesgos y fechas).
+
+[RESTRICCIONES NEGATIVAS (--no)]
+- Prohibido usar frases de cortesía o clichés ("En el vertiginoso mundo moderno...").
+- Prohibido ocultar la discrepancia de 25 días entre la minuta y los sprints de testing.
+- Máximo 350 palabras.
+
+[FORMATO]
+1. Estado Actual (3 viñetas con cifras).
+2. Riesgo Crítico de Fechas (Explicación del desfase de 25 días).
+3. Recomendación de Mitigación (Decisiones requeridas en el comité).
+
+[VALIDACIÓN]
+Verifica que cada conclusión incluya la fuente exacta entre corchetes.
+          </div>
+          <button class="btn-copy-code" data-code-target="codePro">📋 Copiar Especificación Profesional</button>
+        </div>
+      </div>
+
+      <!-- Misión de Investigación 1 -->
+      <div class="accordion" data-id="acc1">
+        <div class="accordion-head">
+          <div class="ah-left">
+            <span class="ah-icon">🧭</span>
+            <h3>Misión 1: Prueba de Fuego del Context Engineering</h3>
+          </div>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p>
+            Copia ambos textos en tu modelo de lenguaje favorito (Claude 3.5 Sonnet, Gemini 1.5 Pro o GPT-4o) y compara los resultados. Analiza cómo la especificación de 8 eslabones elimina la prosa de relleno y fuerza al modelo a razonar sobre los trade-offs de negocio.
+          </p>
+          <div class="research-prompt">
+            <span class="rp-tag">Pregunta Disparadora para tu IA</span>
+            <p>"¿Cuáles son las diferencias entre Few-Shot Priming y Zero-Shot en el diseño de prompts complejos?"</p>
+          </div>
+          <div class="search-term-row">
+            <span class="search-term-chip">🔎 context engineering framework</span>
+            <span class="search-term-chip">🔎 few-shot prompting best practices</span>
+            <span class="search-term-chip">🔎 system prompt vs user prompt architecture</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         BLOQUE 2: DIRECCIÓN VISUAL CON IA
+         ==================================================================== -->
+    <section class="block-section" id="s2">
+      <div class="block-head">
+        <span class="block-num">2</span>
+        <h2>Dirección Visual con IA & Matriz de 9 Variables</h2>
+      </div>
+      <p class="block-sub">Dejar de invocar milagros y dirigir como director de arte y fotografía.</p>
+
+      <!-- Asset Técnico Dirección Visual -->
+      <div class="block-media-showcase">
+        <div class="media-image-container">
+          <img src="assets/visual_direction.jpg" alt="Dirección de Arte y Matriz de 9 Variables de Producción" loading="lazy">
+          <span class="media-badge-overlay">Producción Visual</span>
+        </div>
+        <div class="media-caption-bar">
+          <span><strong>Dirección Fotográfica:</strong> Lente, composición, iluminación volumétrica y paleta de color curada.</span>
+          <span style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.78rem;">9 VARIABLES</span>
+        </div>
+      </div>
+
+      <div class="concept-box">
+        <span class="ctag">Filosofía de Producción</span>
+        <p>
+          Los generadores modernos como <strong>Midjourney v6, Flux.1 y Google Imagen 3</strong> entienden principios de fotografía real. Las palabras como <em>"hyperrealistic 8k ultra detail"</em> están obsoletas y contaminan el modelo. La excelencia visual se logra mediante la **Matriz de 9 Variables** y el bucle iterativo:
+        </p>
+        <p style="font-family: var(--font-mono); font-size: 0.88rem; color: var(--accent-cyan);">
+          Idea ➡ Generación ➡ Crítica Técnica ➡ Corrección ➡ Variante ➡ Selección
+        </p>
+      </div>
+
+      <!-- Micro-Herramienta: Matriz de 9 Variables (Prompt Builder) -->
+      <div class="prompt-builder-tool">
+        <div class="tool-header">
+          <h3>🎛️ Generador Interactivo de Portada: Proyecto Phoenix</h3>
+          <p>Configura las variables técnicas para producir el prompt cinematográfico definitivo en 16:9.</p>
+        </div>
+
+        <div class="variables-controls-grid">
+          <div class="control-field">
+            <label for="varSujeto">1. Sujeto Principal</label>
+            <select id="varSujeto">
+              <option value="Editorial portrait of a senior Latin American female software architect, focused expression">Arquitecta de Software Senior</option>
+              <option value="High-tech enterprise server operations command center with real-time analytics screens">Centro de Mando de Servidores</option>
+              <option value="Close-up of retail point of sale holographic payment transaction interface">Interfaz Holográfica de Pagos</option>
+            </select>
+          </div>
+
+          <div class="control-field">
+            <label for="varEntorno">2. Entorno / Espacio</label>
+            <select id="varEntorno">
+              <option value="inside minimalist glass corporate office at dusk, sprawling city skyline in background">Oficina Minimalista al Atardecer</option>
+              <option value="modern clean server room with subtle neon blue rack illumination">Sala de Racks con Iluminación Azul</option>
+              <option value="bright architectural atrium with natural diffused daylight and steel glass accents">Atrio Arquitectónico con Luz Natural</option>
+            </select>
+          </div>
+
+          <div class="control-field">
+            <label for="varComposicion">3. Composición</label>
+            <select id="varComposicion">
+              <option value="rule of thirds, subject on right third, negative copy space on left">Regla de Tercios (Espacio a la Izq)</option>
+              <option value="medium close-up shot, eye-level angle, balanced framing">Plano Medio a la Altura de los Ojos</option>
+              <option value="wide cinematic establishing composition with vanishing point lines">Plano Panorámico en Punto de Fuga</option>
+            </select>
+          </div>
+
+          <div class="control-field">
+            <label for="varIluminacion">4. Iluminación</label>
+            <select id="varIluminacion">
+              <option value="soft volumetric side lighting, subtle teal rim light, amber warm fill">Luz Volumétrica Lateral (Cian + Ámbar)</option>
+              <option value="crisp high-contrast chiaroscuro corporate lighting">Claroscuro de Alto Contraste</option>
+              <option value="golden hour soft warm sunlight through vertical window blinds">Luz Cálida a Través de Persianas</option>
+            </select>
+          </div>
+
+          <div class="control-field">
+            <label for="varEstilo">5. Estilo Fotográfico</label>
+            <select id="varEstilo">
+              <option value="editorial documentary photo style, Wired Magazine cover aesthetics">Estilo Editorial Revista Wired</option>
+              <option value="hyper-realistic 35mm film grain, Hasselblad aesthetic, natural texture">Cámara 35mm con Grano Fino</option>
+              <option value="clean corporate reportage, Leica color rendition, lifelike skin tones">Reportaje Corporativo Leica</option>
+            </select>
+          </div>
+
+          <div class="control-field">
+            <label for="varCamara">6. Cámara / Lente</label>
+            <select id="varCamara">
+              <option value="shot on 85mm f/1.4 lens, creamy bokeh, shallow depth of field">85mm f/1.4 (Bokeh Cremoso)</option>
+              <option value="shot on 35mm f/2.0 lens, sharp environmental context">35mm f/2.0 (Contexto Nítido)</option>
+              <option value="anamorphic cine lens, horizontal lens flares, cinematic 2.39:1 crop feel">Lente Anamórfica de Cine</option>
+            </select>
+          </div>
+
+          <div class="control-field">
+            <label for="varAspect">7. Relación de Aspecto</label>
+            <select id="varAspect">
+              <option value="--ar 16:9">--ar 16:9 (Panorámico / Portada)</option>
+              <option value="--ar 21:9">--ar 21:9 (Ultrawide Cinemático)</option>
+              <option value="--ar 4:5">--ar 4:5 (Vertical Móvil / Redes)</option>
+            </select>
+          </div>
+
+          <div class="control-field">
+            <label for="varNegativos">8. Restricciones Negativas (--no)</label>
+            <input type="text" id="varNegativos" value="cartoon, 3d plastic render, deformed hands, blurry text, oversaturated neon, stock photo smile">
+          </div>
+        </div>
+
+        <div class="generated-prompt-output">
+          <span class="prompt-output-label">Prompt Cinemático Ensamblado en Tiempo Real:</span>
+          <p class="prompt-text-result" id="promptOutput">Calculando prompt...</p>
+          <button class="btn-copy-code" id="btnCopyPrompt" style="background: var(--accent-cyan); color: #000; border-color: var(--accent-cyan);">
+            🎨 Copiar Prompt para Midjourney / Flux
+          </button>
+        </div>
+      </div>
+
+      <!-- Misión de Investigación 2 -->
+      <div class="accordion" data-id="acc2">
+        <div class="accordion-head">
+          <div class="ah-left">
+            <span class="ah-icon">🧭</span>
+            <h3>Misión 2: El Bucle de Corrección en Generación Visual</h3>
+          </div>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p>
+            Genera una primera imagen con tu prompt. Luego aplica una crítica técnica: ¿las manos tienen 5 dedos?, ¿el texto en la pantalla parece una mezcla alienígena?, ¿la iluminación es consistente? En lugar de volver a escribir un prompt desde cero, utiliza la técnica de <em>Vary (Region) / Inpainting</em> para corregir únicamente el defecto visual detectado.
+          </p>
+          <div class="search-term-row">
+            <span class="search-term-chip">🔎 inpainting midjourney flux</span>
+            <span class="search-term-chip">🔎 aspect ratios in ai image generation</span>
+            <span class="search-term-chip">🔎 camera focal lengths visual effect</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         BLOQUE 3: GENERACIÓN DE VIDEO
+         ==================================================================== -->
+    <section class="block-section" id="s3">
+      <div class="block-head">
+        <span class="block-num">3</span>
+        <h2>Generación de Video: Estado vs. Evolución Temporal</h2>
+      </div>
+      <p class="block-sub">Una imagen es un estado estático congelado; un video es una función de evolución en el tiempo.</p>
+
+      <!-- Asset Técnico Storyboard Video -->
+      <div class="block-media-showcase">
+        <div class="media-image-container">
+          <img src="assets/video_storyboard.jpg" alt="Storyboard de 3 Tomas para Video con IA" loading="lazy">
+          <span class="media-badge-overlay">Cinemática Temporal</span>
+        </div>
+        <div class="media-caption-bar">
+          <span><strong>Storyboard de 10s:</strong> Desglose cinemático en 3 planos complementarios con trayectoria de cámara definida.</span>
+          <span style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.78rem;">TRAVELLING ➡ DOLLY ➡ ORBIT</span>
+        </div>
+      </div>
+
+      <div class="concept-box">
+        <span class="ctag">La Ecuación de Video con IA</span>
+        <p>
+          Los modelos de video (Runway Gen-3, Luma Dream Machine, Kling, Sora) no procesan imágenes aisladas: calculan vectores de movimiento y conservación de coherencia anatómica y lumínica. La fórmula maestra para controlar un clip es:
+        </p>
+        <p style="font-family: var(--font-mono); font-size: 0.88rem; color: var(--accent-purple);">
+          Escena + Sujeto + Acción Específica + Movimiento de Cámara + Velocidad + Duración + Continuidad
+        </p>
+      </div>
+
+      <!-- Scrubber Interactivo de Storyboard -->
+      <div class="storyboard-timeline-widget">
+        <div class="timeline-scrubber">
+          <div class="timeline-segment-btn active" data-shot="shot1">
+            <span class="timeline-time-badge">0.0s – 3.0s</span>
+            <span class="timeline-segment-title">Toma 1: Establecimiento</span>
+          </div>
+          <div class="timeline-segment-btn" data-shot="shot2">
+            <span class="timeline-time-badge">3.0s – 6.0s</span>
+            <span class="timeline-segment-title">Toma 2: Conexión Humana</span>
+          </div>
+          <div class="timeline-segment-btn" data-shot="shot3">
+            <span class="timeline-time-badge">6.0s – 10.0s</span>
+            <span class="timeline-segment-title">Toma 3: Revelación de Datos</span>
+          </div>
+        </div>
+
+        <div class="storyboard-detail-card">
+          <div class="storyboard-shot-header">
+            <h4 id="shotTitle" style="margin: 0; color: #fff; font-size: 1.05rem;">Cargando toma...</h4>
+            <span class="shot-camera-pill" id="shotCamera">Cámara</span>
+          </div>
+          <p id="shotAction" style="font-size: 0.92rem; color: var(--text-dim); margin: 0 0 10px;">Acción de la escena...</p>
+          <div class="storyboard-prompt-spec" id="shotPrompt">Prompt cinemático...</div>
+        </div>
+      </div>
+
+      <!-- Misión de Investigación 3 -->
+      <div class="accordion" data-id="acc3">
+        <div class="accordion-head">
+          <div class="ah-left">
+            <span class="ah-icon">🧭</span>
+            <h3>Misión 3: De Imagen Estática a Video (Image-to-Video)</h3>
+          </div>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p>
+            Investiga por qué el método <strong>Image-to-Video (I2V)</strong> es infinitamente superior a <strong>Text-to-Video (T2V)</strong> en proyectos profesionales. ¿Cómo garantiza el uso de una imagen de partida (Keyframe) que los personajes, las marcas y la estética permanezcan coherentes entre tomas?
+          </p>
+          <div class="search-term-row">
+            <span class="search-term-chip">🔎 image to video camera motions</span>
+            <span class="search-term-chip">🔎 keyframe consistency in generative video</span>
+            <span class="search-term-chip">🔎 motion brush runway gen-3</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         BLOQUE 4: NOTEBOOKLM & GROUNDING FACTUAL
+         ==================================================================== -->
+    <section class="block-section" id="s4">
+      <div class="block-head">
+        <span class="block-num">4</span>
+        <h2>NotebookLM como Espacio de Conocimiento (Grounding)</h2>
+      </div>
+      <p class="block-sub">Eliminando el pánico a las alucinaciones: razonamiento fundamentado exclusivamente en tus fuentes.</p>
+
+      <!-- Asset Técnico NotebookLM Grounding -->
+      <div class="block-media-showcase">
+        <div class="media-image-container">
+          <img src="assets/notebooklm_grounding.jpg" alt="NotebookLM: Grounding Factual y Citación de Fuentes" loading="lazy">
+          <span class="media-badge-overlay">Anclaje Factual</span>
+        </div>
+        <div class="media-caption-bar">
+          <span><strong>Grounding Estricto:</strong> Ninguna afirmación se inventa; cada dato proviene de los 5 archivos del Proyecto Phoenix con citas [1], [2].</span>
+          <span style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.78rem;">CITAS NUMÉRICAS AUDITABLES</span>
+        </div>
+      </div>
+
+      <div class="concept-box">
+        <span class="ctag">El Fin de las Alucinaciones</span>
+        <p>
+          Mientras que un chatbot ordinario busca responder siempre basándose en probabilidades estadísticas de todo internet, <strong>NotebookLM</strong> crea un espacio de conocimiento privado donde el modelo se "ancla" (<em>Grounding</em>) únicamente a los documentos que tú subes. Si la información no está en los archivos, el sistema lo indica explícitamente.
+        </p>
+      </div>
+
+      <!-- Simulador de Auditoría Factual con Citas Clicables -->
+      <div class="grounding-audit-widget">
+        <div class="tool-header">
+          <h3>🔍 Auditoría en Vivo: Las 5 Preguntas Maestras de Phoenix</h3>
+          <p>Haz clic en las preguntas de auditoría y pulsa en las citas numéricas <span class="citation-chip">[1]</span> para verificar el documento original.</p>
+        </div>
+
+        <div class="audit-questions-nav">
+          <button class="audit-q-btn" data-q="q1">1. Objetivos Consensuados</button>
+          <button class="audit-q-btn" data-q="q2">2. Decisiones vs Abiertos</button>
+          <button class="audit-q-btn" data-q="q3">3. Riesgos Cruzados</button>
+          <button class="audit-q-btn active" data-q="q4">🔥 4. La Prueba Reina: Contradicciones</button>
+          <button class="audit-q-btn" data-q="q5">5. Trazabilidad Total</button>
+        </div>
+
+        <div class="audit-response-card">
+          <h4 class="audit-q-title" id="auditQTitle">Cargando pregunta...</h4>
+          <p class="audit-grounded-text" id="auditText">Cargando análisis fundamentado...</p>
+
+          <!-- Drawer de Evidencia Original -->
+          <div class="source-evidence-drawer" id="sourceEvidenceDrawer">
+            <div class="evidence-title" id="evidenceTitle">📄 Fuente Original</div>
+            <p id="evidenceQuote" style="font-family: var(--font-mono); margin: 0; font-size: 0.88rem; color: #fff;">Fragmento citado...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Misión de Investigación 4 -->
+      <div class="accordion" data-id="acc4">
+        <div class="accordion-head">
+          <div class="ah-left">
+            <span class="ah-icon">🧭</span>
+            <h3>Misión 4: Detectar Inconsistencias Humanas con IA</h3>
+          </div>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p>
+            En organizaciones reales, los líderes comerciales firman compromisos sin consultar las hojas de cálculo del equipo de ingeniería. Sube dos documentos deliberadamente contradictorios a NotebookLM y formula esta pregunta exacta:
+          </p>
+          <div class="research-prompt">
+            <span class="rp-tag">Prompt de Auditoría Forense</span>
+            <p>"Compara los plazos expresados en el documento A frente a las fechas de los sprints del documento B. ¿Existe algún desfase temporal? Cita los números de página exactos."</p>
+          </div>
+          <div class="search-term-row">
+            <span class="search-term-chip">🔎 grounding in llm explained</span>
+            <span class="search-term-chip">🔎 notebooklm use cases enterprise</span>
+            <span class="search-term-chip">🔎 source citations rag architectures</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         BLOQUE 5: FACTORÍA MULTIFORMATO & HACKATHON
+         ==================================================================== -->
+    <section class="block-section" id="s5">
+      <div class="block-head">
+        <span class="block-num">5</span>
+        <h2>De Información a Entregables Multiformato</h2>
+      </div>
+      <p class="block-sub">Mismas fuentes documentales, 5 entregables estratégicos de alto impacto.</p>
+
+      <div class="concept-box">
+        <span class="ctag">El Principio de la Factoría</span>
+        <p>
+          Un único paquete de fuentes (como el del Proyecto Phoenix) no sirve solo para hacer resúmenes: es un activo líquido del que se derivan memos directivos, matrices técnicas, FAQs operativas y síntesis conversacionales de audio.
+        </p>
+      </div>
+
+      <!-- Visor de Entregables Multiformato -->
+      <div class="deliverables-factory-widget">
+        <div class="factory-tabs-row">
+          <button class="factory-tab-btn active" data-deliverable="resumen">📄 1. Memo Ejecutivo (1 Cuartilla)</button>
+          <button class="factory-tab-btn" data-deliverable="riesgos">⚠️ 2. Matriz de Riesgos</button>
+          <button class="factory-tab-btn" data-deliverable="faq">💬 3. FAQ de Negocio</button>
+          <button class="factory-tab-btn" data-deliverable="timeline">📅 4. Timeline Crítico</button>
+          <button class="factory-tab-btn" data-deliverable="podcast">🎙️ 5. Audio Overview (Podcast)</button>
+        </div>
+
+        <div class="deliverable-preview-pane">
+          <h4 id="deliverableTitle" style="margin: 0 0 10px; color: var(--accent-cyan); font-size: 1.05rem;">
+            Resumen Ejecutivo de 1 Cuartilla (Comité Directivo)
+          </h4>
+          <div id="deliverableBody" style="font-size: 0.92rem; color: var(--text-main); line-height: 1.6;">
+            Cargando entregable...
+          </div>
+        </div>
+
+        <!-- Cronómetro del Hackathon (15 Minutos) -->
+        <div class="hackathon-timer-card">
+          <div class="timer-left">
+            <h4>⏱️ Dinámica Hackathon en Parejas (15 Minutos)</h4>
+            <p>Genera y valida los 5 entregables en NotebookLM antes de que el reloj llegue a cero.</p>
+          </div>
+          <div class="timer-clock-display" id="timerClockDisplay">15:00</div>
+          <div class="timer-controls">
+            <button class="btn-timer" id="btnStartTimer">Iniciar Reloj</button>
+            <button class="btn-timer" id="btnResetTimer" style="background: rgba(255,255,255,0.08);">Reiniciar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         BLOQUE 6: INFERENCIA LOCAL CON LM STUDIO
+         ==================================================================== -->
+    <section class="block-section" id="s6">
+      <div class="block-head">
+        <span class="block-num">6</span>
+        <h2>Inferencia Local Soberana con LM Studio</h2>
+      </div>
+      <p class="block-sub">Ejecutar modelos en tu propia memoria RAM: 100% desconectado, privado y soberano.</p>
+
+      <!-- Asset Técnico LM Studio -->
+      <div class="block-media-showcase">
+        <div class="media-image-container">
+          <img src="assets/local_ai_lmstudio.jpg" alt="Inferencia Local Soberana con LM Studio y Modelos GGUF" loading="lazy">
+          <span class="media-badge-overlay">Soberanía de Datos</span>
+        </div>
+        <div class="media-caption-bar">
+          <span><strong>Inferencia Air-Gapped:</strong> Ejecución de modelos cuantizados (GGUF 4-bit) con costo marginal $0 y privacidad absoluta.</span>
+          <span style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.78rem;">OFFLINE CAPABLE</span>
+        </div>
+      </div>
+
+      <div class="concept-box">
+        <span class="ctag">Las 4 Razones Estratégicas</span>
+        <p>
+          La IA en la nube y la IA local son arquitecturas complementarias. Adoptar modelos locales soberanos ofrece cuatro ventajas insustituibles:
+        </p>
+        <ol style="margin: 0; padding-left: 20px; font-size: 0.94rem; color: var(--text-main);">
+          <li><strong>Privacidad Absoluta (Air-Gapped):</strong> Ningún token viaja por internet; cumple las normativas de seguridad más severas.</li>
+          <li><strong>Operación Offline:</strong> Inferencia garantizada en aviones, plantas remotas o caídas de conectividad.</li>
+          <li><strong>Costo Marginal $0:</strong> Una vez descargado el modelo, puedes realizar millones de consultas sin facturas de API.</li>
+          <li><strong>Independencia de Proveedor:</strong> Ningún cambio de términos y condiciones de terceros puede apagar tu servicio.</li>
+        </ol>
+      </div>
+
+      <!-- Calculadora Interactiva de Hardware para LM Studio -->
+      <div class="hardware-calc-widget">
+        <div class="tool-header">
+          <h3>💻 Calculadora de Hardware: ¿Qué modelo cabe en tu computadora?</h3>
+          <p>Selecciona la memoria RAM instalada en tu equipo para conocer el modelo GGUF (cuantizado a 4 bits) recomendado:</p>
+        </div>
+
+        <div class="ram-selector-row">
+          <button class="btn-ram-select" data-ram="8">8 GB RAM</button>
+          <button class="btn-ram-select active" data-ram="16">16 GB RAM</button>
+          <button class="btn-ram-select" data-ram="32">32 GB RAM</button>
+          <button class="btn-ram-select" data-ram="64">64 GB+ RAM</button>
+        </div>
+
+        <div class="hardware-recommendation-card">
+          <div style="font-size: 0.85rem; color: var(--accent-cyan); font-weight: 700; text-transform: uppercase;">Modelo Óptimo Recomendado:</div>
+          <h4 id="specModelName" style="margin: 4px 0 10px; font-size: 1.15rem; color: #fff;">Qwen2.5-7B-Instruct (GGUF Q4_K_M)</h4>
+
+          <div class="model-spec-grid">
+            <div class="spec-cell">
+              <span class="spec-cell-label">Tamaño Descarga</span>
+              <span class="spec-cell-val" id="specDownload">4.5 GB</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-cell-label">RAM Ocupada</span>
+              <span class="spec-cell-val" id="specRamUsage">~6.5 GB</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-cell-label">Velocidad Típica</span>
+              <span class="spec-cell-val" id="specSpeed">25–40 tok/s</span>
+            </div>
+          </div>
+
+          <p id="specVerdict" style="margin: 12px 0 0; font-size: 0.88rem; color: var(--text-dim); line-height: 1.5;">
+            El estándar dorado corporativo. Excelente razonamiento sin saturar la máquina.
+          </p>
+        </div>
+
+        <!-- Demostración del Modo Avión -->
+        <div class="airplane-demo-box">
+          <div>
+            <h5 style="margin: 0 0 4px; font-size: 0.95rem; color: #fff;">Prueba de Fuego en Vivo: El Modo Avión</h5>
+            <p id="airplaneStatusText" style="margin: 0; font-size: 0.84rem; color: var(--text-dim);">
+              Prueba a activar el Modo Avión para verificar que la inferencia ocurre localmente en tu memoria RAM.
+            </p>
+          </div>
+          <button class="airplane-toggle-btn" id="btnToggleAirplane">✈️ Simular Modo Avión</button>
+        </div>
+      </div>
+
+      <!-- Misión de Investigación 5 -->
+      <div class="accordion" data-id="acc5">
+        <div class="accordion-head">
+          <div class="ah-left">
+            <span class="ah-icon">🧭</span>
+            <h3>Misión 5: Cuantización GGUF Explicada</h3>
+          </div>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p>
+            Investiga cómo funciona la cuantización <strong>Q4_K_M</strong> (4-bit). ¿Cómo es posible comprimir un modelo que pesaba 28 GB en coma flotante (FP16) para que quepa en un archivo de 4.5 GB manteniendo más del 98% de su precisión de razonamiento?
+          </p>
+          <div class="search-term-row">
+            <span class="search-term-chip">🔎 gguf quantization explained</span>
+            <span class="search-term-chip">🔎 llama.cpp vs vllm</span>
+            <span class="search-term-chip">🔎 lm studio offline setup guide</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         BLOQUE 7: RETO PHOENIX & LOS 5 FILTROS CRÍTICOS
+         ==================================================================== -->
+    <section class="block-section" id="s7">
+      <div class="block-head">
+        <span class="block-num">7</span>
+        <h2>Reto Integrado Phoenix & Supervisión Humana</h2>
+      </div>
+      <p class="block-sub">El pipeline de extremo a extremo y la rúbrica de control de calidad post-generación.</p>
+
+      <!-- Asset Técnico Pipeline Phoenix -->
+      <div class="block-media-showcase">
+        <div class="media-image-container">
+          <img src="assets/phoenix_pipeline.jpg" alt="Pipeline Integrado del Proyecto Phoenix: De Minuta a Producción" loading="lazy">
+          <span class="media-badge-overlay">Pipeline Extremo a Extremo</span>
+        </div>
+        <div class="media-caption-bar">
+          <span><strong>El Flujo Phoenix:</strong> Minuta ➡ Especificación de Contexto ➡ Portada con Arte ➡ Storyboard ➡ Grounding ➡ Inferencia Local.</span>
+          <span style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.78rem;">HUMAN IN THE LOOP</span>
+        </div>
+      </div>
+
+      <div class="concept-box">
+        <span class="ctag">Rúbrica de Auditoría Obligatoria</span>
+        <p>
+          Ningún contenido generado por IA debe enviarse a un cliente o a un comité sin pasar por la **Rúbrica de los 5 Filtros Críticos**. Como profesional responsable, tu función principal es ser el árbitro final de verdad y estrategia:
+        </p>
+      </div>
+
+      <!-- Matriz Interactiva de los 5 Filtros Críticos -->
+      <div class="critical-filters-list">
+        <label class="filter-check-item" for="f1">
+          <input type="checkbox" id="f1">
+          <div class="filter-content">
+            <h5>1. ¿Es fácticamente correcto?</h5>
+            <p>Verificación cruzada de números duros, presupuestos ($120k) y fechas comprometidas.</p>
+          </div>
+        </label>
+
+        <label class="filter-check-item" for="f2">
+          <input type="checkbox" id="f2">
+          <div class="filter-content">
+            <h5>2. ¿Está sustentado en fuentes documentales?</h5>
+            <p>Cada párrafo debe contar con citas verificables o referencias empíricas demostrables.</p>
+          </div>
+        </label>
+
+        <label class="filter-check-item" for="f3">
+          <input type="checkbox" id="f3">
+          <div class="filter-content">
+            <h5>3. ¿Cumple el objetivo de negocio?</h5>
+            <p>El tono, formato y nivel de síntesis resuelven el dolor específico de la junta directiva.</p>
+          </div>
+        </label>
+
+        <label class="filter-check-item" for="f4">
+          <input type="checkbox" id="f4">
+          <div class="filter-content">
+            <h5>4. ¿Qué inventó o asumió la máquina?</h5>
+            <p>Detección quirúrgica de interpolaciones estadísticas, sesgos o generalizaciones no solicitadas.</p>
+          </div>
+        </label>
+
+        <label class="filter-check-item" for="f5">
+          <input type="checkbox" id="f5">
+          <div class="filter-content">
+            <h5>5. ¿Qué decisiones éticas y estratégicas debo validar yo?</h5>
+            <p>El criterio humano (HITL - Human in the Loop) es el único habilitado para asumir responsabilidad legal.</p>
+          </div>
+        </label>
+      </div>
+
+      <!-- Barra de Madurez del Entregable -->
+      <div style="background: var(--bg-soft); padding: 14px 18px; border-radius: var(--radius-sm); border: 1px solid var(--card-border); margin-top: 14px;">
+        <div style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 6px;">
+          <span>Nivel de Certificación del Entregable:</span>
+          <span id="filterMaturityText" style="font-weight: 700;">0/5: Borrador preliminar</span>
+        </div>
+        <div style="height: 6px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden;">
+          <div id="filterMaturityBar" style="height: 100%; width: 0%; background: var(--accent-cyan); transition: width 0.3s ease;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         GLOSARIO TÉCNICO 3D (FLASHCARDS FLIP)
+         ==================================================================== -->
+    <section class="block-section" id="s8">
+      <div class="block-head">
+        <span class="block-num">8</span>
+        <h2>Glosario Técnico de Producción</h2>
+      </div>
+      <p class="block-sub">Toca o haz clic sobre cada tarjeta para girarla y explorar el concepto.</p>
+
+      <div class="flashcards-grid">
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-face flashcard-front">
+              <span class="fc-icon">🏗️</span>
+              <h4>Context Engineering</h4>
+              <span class="fc-hint">Toca para voltear</span>
+            </div>
+            <div class="flashcard-face flashcard-back">
+              <p>Metodología estructurada de especificación técnica de requerimientos, insumos y restricciones que reemplaza el prompting conversacional novato.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-face flashcard-front">
+              <span class="fc-icon">⚓</span>
+              <h4>Grounding Factual</h4>
+              <span class="fc-hint">Toca para voltear</span>
+            </div>
+            <div class="flashcard-face flashcard-back">
+              <p>Técnica de anclaje que obliga al modelo a generar respuestas basadas exclusivamente en un conjunto delimitado de fuentes auditables mediante citas.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-face flashcard-front">
+              <span class="fc-icon">🗜️</span>
+              <h4>Cuantización GGUF</h4>
+              <span class="fc-hint">Toca para voltear</span>
+            </div>
+            <div class="flashcard-face flashcard-back">
+              <p>Formato de compresión numérica (Q4_K_M a 4 bits) que reduce drásticamente el peso y requerimiento de RAM para ejecutar LLMs en computadoras normales.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-face flashcard-front">
+              <span class="fc-icon">🛡️</span>
+              <h4>Inferencia Air-Gapped</h4>
+              <span class="fc-hint">Toca para voltear</span>
+            </div>
+            <div class="flashcard-face flashcard-back">
+              <p>Ejecución de modelos de inteligencia artificial en entornos totalmente aislados de cualquier red física o internet, garantizando privacidad absoluta.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-face flashcard-front">
+              <span class="fc-icon">🎞️</span>
+              <h4>Keyframe & Trayectoria</h4>
+              <span class="fc-hint">Toca para voltear</span>
+            </div>
+            <div class="flashcard-face flashcard-back">
+              <p>Uso de una imagen inicial de referencia para condicionar la geometría y continuidad de una toma de video generada con IA a lo largo del tiempo.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-face flashcard-front">
+              <span class="fc-icon">🎯</span>
+              <h4>Few-Shot Priming</h4>
+              <span class="fc-hint">Toca para voltear</span>
+            </div>
+            <div class="flashcard-face flashcard-back">
+              <p>Inclusión de ejemplos concretos de pares entrada-salida dentro del prompt para guiar el tono, la sintaxis y el formato de la respuesta sin reentrenar.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         AUTOEVALUACIÓN PRÁCTICA (QUIZZES SITUACIONALES)
+         ==================================================================== -->
+    <section class="block-section" id="s9">
+      <div class="block-head">
+        <span class="block-num">9</span>
+        <h2>Autoevaluación Práctica</h2>
+      </div>
+      <p class="block-sub">Pon a prueba tu criterio técnico con casos reales de toma de decisiones.</p>
+
+      <!-- Quiz 1 -->
+      <div class="quiz-box">
+        <p class="quiz-q">1. Un analista desea procesar un archivo confidencial con contraseñas de producción y salarios. ¿Cuál es el protocolo estricto según la Regla Cero?</p>
+        <button class="quiz-opt" data-correct="false">Subirlo a un chat gratuito en la nube pidiéndole al modelo que "por favor mantenga secreto los datos".</button>
+        <button class="quiz-opt" data-correct="true">Clasificarlo como ROJO: Está terminantemente prohibido subir secretos y PII a nubes públicas sin anonimización radical previa.</button>
+        <button class="quiz-opt" data-correct="false">Cargarlo a cualquier IA siempre y cuando se use una ventana de incógnito en el navegador.</button>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <!-- Quiz 2 -->
+      <div class="quiz-box">
+        <p class="quiz-q">2. ¿Por qué una especificación de Context Engineering supera al simple prompting novato?</p>
+        <button class="quiz-opt" data-correct="false">Porque utiliza más palabras en inglés para impresionar al algoritmo.</button>
+        <button class="quiz-opt" data-correct="true">Porque delimita objetivos, datos duros, audiencia, restricciones negativas y criterios de aceptación verificables.</button>
+        <button class="quiz-opt" data-correct="false">Porque reentrena los pesos neuronales del modelo en los servidores centrales.</button>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <!-- Quiz 3 -->
+      <div class="quiz-box">
+        <p class="quiz-q">3. En el ejercicio de auditoría con NotebookLM, ¿qué ventaja crítica aporta el anclaje factual (Grounding)?</p>
+        <button class="quiz-opt" data-correct="true">Permite detectar discrepancias entre documentos reales (ej. desfase de 25 días) respaldando cada hallazgo con citas numéricas exactas.</button>
+        <button class="quiz-opt" data-correct="false">Garantiza que la IA invente datos adicionales para rellenar los vacíos que el humano olvidó documentar.</button>
+        <button class="quiz-opt" data-correct="false">Permite que el modelo navegue por toda la web sin límites para contradecir los archivos del usuario.</button>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <!-- Quiz 4 -->
+      <div class="quiz-box">
+        <p class="quiz-q">4. ¿Cuál es la principal ventaja de ejecutar un modelo local GGUF en LM Studio con el Wi-Fi desconectado?</p>
+        <button class="quiz-opt" data-correct="false">Que el modelo se vuelve más inteligente porque no gasta memoria en internet.</button>
+        <button class="quiz-opt" data-correct="true">Privacidad total (soberanía de datos en RAM), funcionamiento offline y costo marginal $0 por consulta.</button>
+        <button class="quiz-opt" data-correct="false">Que la batería de la laptop dura para siempre.</button>
+        <div class="quiz-feedback"></div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         CHECKLIST DE DOMINIO PROFESIONAL
+         ==================================================================== -->
+    <section class="block-section" id="s10">
+      <div class="block-head">
+        <span class="block-num">✓</span>
+        <h2>Checklist de Dominio Profesional</h2>
+      </div>
+      <p class="block-sub">Marca únicamente los hitos que estés preparado para ejecutar de forma autónoma.</p>
+
+      <div class="checklist-container">
+        <label class="checklist-item">
+          <input type="checkbox" data-k="chk1">
+          <span>Aplico el Semáforo de Clasificación (Rojo, Amarillo, Verde) antes de alimentar cualquier IA.</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox" data-k="chk2">
+          <span>Sé redactar una especificación de trabajo utilizando el Framework de 8 Eslabones de Context Engineering.</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox" data-k="chk3">
+          <span>Configuro las 9 variables fotográficas para dirigir la portada de un proyecto en 16:9 con Midjourney/Flux.</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox" data-k="chk4">
+          <span>Puedo diseñar un storyboard de 10 segundos en 3 tomas diferenciadas para video temporal con IA.</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox" data-k="chk5">
+          <span>Utilizo NotebookLM para auditar paquetes documentales complejos mediante las 5 Preguntas Maestras y citas auditables.</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox" data-k="chk6">
+          <span>He sintetizado al menos 3 entregables ejecutivos distintos a partir de la misma fuente documental.</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox" data-k="chk7">
+          <span>Sé descargar, configurar y ejecutar un modelo cuantizado en LM Studio en Modo Avión (100% offline).</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox" data-k="chk8">
+          <span>Aplico la rúbrica de los 5 Filtros Críticos (HITL) antes de entregar cualquier reporte a la dirección general.</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         RECURSOS PARA PROFUNDIZAR
+         ==================================================================== -->
+    <section class="block-section" id="s11">
+      <div class="block-head">
+        <span class="block-num">📚</span>
+        <h2>Recursos y Ecosistema Oficial</h2>
+      </div>
+      <p class="block-sub">Enlaces seleccionados para continuar tu desarrollo profesional.</p>
+
+      <div class="resources-grid">
+        <a href="https://lmstudio.ai" target="_blank" rel="noopener" class="resource-card">
+          <span class="resource-icon">💻</span>
+          <h4>LM Studio Oficial</h4>
+          <p>Descarga el entorno líder de inferencia local para Mac, Windows y Linux con soporte GGUF y GPU Metal/CUDA.</p>
+          <span class="resource-link-arrow">lmstudio.ai →</span>
+        </a>
+
+        <a href="https://notebooklm.google.com" target="_blank" rel="noopener" class="resource-card">
+          <span class="resource-icon">📓</span>
+          <h4>Google NotebookLM</h4>
+          <p>Espacio de trabajo para investigación basada en grounding estricto con Gemini 1.5 Pro y citas auditables.</p>
+          <span class="resource-link-arrow">notebooklm.google.com →</span>
+        </a>
+
+        <a href="https://huggingface.co/models?search=gguf" target="_blank" rel="noopener" class="resource-card">
+          <span class="resource-icon">🤗</span>
+          <h4>Modelos GGUF en Hugging Face</h4>
+          <p>Explora repositorios de cuantización oficial (TheBloke, Bartowski) para Llama-3.2, Qwen2.5 y Mistral.</p>
+          <span class="resource-link-arrow">huggingface.co →</span>
+        </a>
+
+        <a href="https://www.midjourney.com" target="_blank" rel="noopener" class="resource-card">
+          <span class="resource-icon">🎨</span>
+          <h4>Documentación de Midjourney v6</h4>
+          <p>Parámetros oficiales de control de aspect ratio (--ar), estilización (--s), variedad y edición por regiones.</p>
+          <span class="resource-link-arrow">docs.midjourney.com →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         FOOTER & AUTORÍA
+         ==================================================================== -->
+    <footer class="site-footer">
+      <p style="font-weight: 700; color: #fff; font-size: 0.95rem;">Guía de Estudio Oficial para Alumnos · Módulo 2</p>
+      <p style="color: var(--text-dim); font-size: 0.85rem;">IA Aplicada: Crear, Investigar y Trabajar con tus Propios Datos</p>
+      
+      <div class="footer-author-box">
+        <div class="author-avatar-badge">MC</div>
+        <div class="author-info">
+          <h4>Propiedad Intelectual y Autoría: Marcos Cruz A.</h4>
+          <p>AI Solutions, Enablement Specialist · Arquitectura de Negocio & Software Engineer</p>
+        </div>
+      </div>
+
+      <p style="margin-top: 22px; font-size: 0.78rem; color: var(--text-muted); max-width: 760px; margin-left: auto; margin-right: auto; line-height: 1.55;">
+        © Todos los derechos reservados. Este cuaderno de trabajo interactivo ha sido desarrollado exclusivamente para el repaso personal y estudio autónomo del estudiante. La presentación ejecutiva, metodología didáctica y láminas maestras de clase son propiedad intelectual exclusiva de <strong>Marcos Cruz A.</strong> y están reservadas únicamente para uso docente del facilitador.
+      </p>
+    </footer>
+
+  </main>
+
+  <!-- Lógica Interactiva del Módulo 2 -->
+  <script src="guia_estudio_modulo2.js"></script>
+</body>
+
+</html>

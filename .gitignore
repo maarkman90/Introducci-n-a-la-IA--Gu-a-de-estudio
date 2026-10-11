@@ -1,0 +1,18 @@
+# ==============================================================================
+# PROPIEDAD INTELECTUAL PRIVADA DEL INSTRUCTOR (NO COMPARTIR CON ALUMNOS)
+# ==============================================================================
+modulo1_slides.html
+modulo2.html
+modulo2.css
+modulo2.js
+style.css
+script.js
+guia_instructor_modulo1.md
+guia_instructor_modulo2.md
+*.pptx
+generate_deck.py
+
+# Archivos de Sistema y Entorno
+.DS_Store
+.graphify/
+.graphifyignore

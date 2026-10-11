@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Portal de Guías de Estudio Interactivas · Introducción a la IA | Marcos Cruz A.</title>
+  <meta name="description" content="Portal oficial de estudio interactivo y autoaprendizaje de Inteligencia Artificial. Módulo 1 (Fundamentos y LLMs) y Módulo 2 (Context Engineering, Multimedia, NotebookLM y Modelos Locales).">
+  <meta name="author" content="Marcos Cruz A.">
+
+  <!-- Tipografía Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos del Portal -->
+  <link rel="stylesheet" href="portal.css">
+</head>
+
+<body>
+
+  <!-- ====================================================================
+       HEADER SUPERIOR
+       ==================================================================== -->
+  <header class="portal-header">
+    <div class="portal-header-inner">
+      <div class="portal-brand">
+        <span class="portal-logo-badge">CURSO IA</span>
+        <span class="portal-title-brand">Portal de Guías de Estudio Interactivas</span>
+      </div>
+
+      <div class="portal-header-actions">
+        <a href="https://github.com/maarkman90/Introducci-n-a-la-IA--Gu-a-de-estudio" target="_blank" rel="noopener" class="btn-repo-github">
+          <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          Repositorio en GitHub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+       HERO PRINCIPAL
+       ==================================================================== -->
+  <main class="portal-wrap">
+
+    <section class="portal-hero">
+      <span class="hero-pill-tag">🚀 Aprendizaje Activo · Sin Memorización</span>
+      
+      <h1>
+        Descifra y Domina la <br>
+        <span class="gradient-text">Inteligencia Artificial</span>
+      </h1>
+
+      <p class="portal-hero-lead">
+        Accede a los cuadernos de estudio interactivos oficiales. Diseñados con un enfoque de <strong>80% práctica y 20% concepto</strong> para que experimentes, audites y construyas criterio técnico directamente desde tu computadora o celular.
+      </p>
+
+      <div class="portal-stats-row">
+        <div class="portal-stat-pill">
+          <span>📚 Módulos Disponibles:</span>
+          <strong>2 Módulos</strong>
+        </div>
+        <div class="portal-stat-pill">
+          <span>🏆 Módulos Completados:</span>
+          <strong id="globalModulesCount">0/2</strong>
+        </div>
+        <div class="portal-stat-pill">
+          <span>🛡️ Enfoque:</span>
+          <strong>Producción & Soberanía</strong>
+        </div>
+        <div class="portal-stat-pill">
+          <span>👨‍🏫 Instructor:</span>
+          <strong>Marcos Cruz A.</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         CATÁLOGO DE MÓDULOS DE ESTUDIO
+         ==================================================================== -->
+    <section id="catalogo">
+      <div class="section-heading-box">
+        <div>
+          <h2>📂 Catálogo de Módulos</h2>
+          <p>Selecciona un módulo para abrir su guía de estudio interactiva con laboratorios y autoevaluación.</p>
+        </div>
+      </div>
+
+      <div class="modules-grid">
+
+        <!-- MÓDULO 1 -->
+        <article class="module-card">
+          <div class="module-card-banner">
+            <img src="assets/cover.jpg" alt="Módulo 1: Descifrando la Inteligencia Artificial" loading="eager">
+            <span class="module-num-pill">MÓDULO 1</span>
+            <span class="module-status-badge active" id="m1ProgressBadge">🟢 DISPONIBLE</span>
+          </div>
+          <div class="module-card-body">
+            <div class="module-meta-row">
+              <span>⏱️ ~60 Minutos de Estudio</span>
+              <span>Nivel: Fundacional</span>
+            </div>
+            <h3>Módulo 1: Descifrando la Inteligencia Artificial</h3>
+            <p>
+              Comprende qué hay realmente detrás de un LLM: del cambio de paradigma de programación tradicional a modelos estadísticos, anatomía de tokens, parámetros, temperatura, interfaces vs. modelos y límites reales del prompt.
+            </p>
+            <div class="module-topics-tags">
+              <span class="topic-chip">🔄 Reglas vs. Datos</span>
+              <span class="topic-chip">🔡 Token & Parámetros</span>
+              <span class="topic-chip">🎲 Alucinación</span>
+              <span class="topic-chip">⚖️ Interfaz vs. Modelo</span>
+              <span class="topic-chip">🧩 GPTs & RAG</span>
+            </div>
+            <a href="guia1_estudio_interactiva.html" class="btn-open-module">
+              Abrir Guía Módulo 1 ➔
+            </a>
+          </div>
+        </article>
+
+        <!-- MÓDULO 2 -->
+        <article class="module-card">
+          <div class="module-card-banner">
+            <img src="assets/modulo2_cover.jpg" alt="Módulo 2: IA Aplicada: Crear, Investigar y Trabajar con tus Propios Datos" loading="eager">
+            <span class="module-num-pill">MÓDULO 2</span>
+            <span class="module-status-badge active" id="m2ProgressBadge">🟢 DISPONIBLE</span>
+          </div>
+          <div class="module-card-body">
+            <div class="module-meta-row">
+              <span>⏱️ ~90 Minutos de Estudio</span>
+              <span>Nivel: Producción & Datos</span>
+            </div>
+            <h3>Módulo 2: IA Aplicada: Crear, Investigar y Trabajar con tus Propios Datos</h3>
+            <p>
+              Pasa de usar la IA como simple chatbot a un entorno de producción multimodal: Context Engineering (8 eslabones), dirección de arte con IA (9 variables), video en 3 tomas, anclaje fáctico en NotebookLM e inferencia local soberana en LM Studio.
+            </p>
+            <div class="module-topics-tags">
+              <span class="topic-chip">🛡️ Gobernanza de Datos</span>
+              <span class="topic-chip">🏗️ Context Engineering</span>
+              <span class="topic-chip">🎨 Dirección de Arte 16:9</span>
+              <span class="topic-chip">🎬 Storyboard Temporal</span>
+              <span class="topic-chip">📓 NotebookLM Grounding</span>
+              <span class="topic-chip">💻 LM Studio Offline</span>
+              <span class="topic-chip">🎯 5 Filtros Críticos</span>
+            </div>
+            <a href="guia2_estudio_interactiva.html" class="btn-open-module">
+              Abrir Guía Módulo 2 ➔
+            </a>
+          </div>
+        </article>
+
+        <!-- MÓDULO 3 (PRÓXIMAMENTE) -->
+        <article class="module-card upcoming">
+          <div class="module-card-banner" style="background: radial-gradient(circle, #1a2444 0%, #0b0f19 80%); display: flex; align-items: center; justify-content: center;">
+            <div style="font-size: 3rem;">🤖</div>
+            <span class="module-num-pill">MÓDULO 3</span>
+            <span class="module-status-badge upcoming-badge">🟡 PRÓXIMAMENTE</span>
+          </div>
+          <div class="module-card-body">
+            <div class="module-meta-row">
+              <span>⏱️ En Desarrollo</span>
+              <span>Nivel: Avanzado</span>
+            </div>
+            <h3>Módulo 3: Agentes Autónomos, Workflows y Automatizaciones</h3>
+            <p>
+              Diseño de sistemas agentic: llamada a herramientas (function calling), flujos de orquestación gráfica, memoria a largo plazo, agentes supervisores y automatización de flujos de trabajo repetitivos en organizaciones.
+            </p>
+            <div class="module-topics-tags">
+              <span class="topic-chip">🤖 Agentic Patterns</span>
+              <span class="topic-chip">🛠️ Tool Calling</span>
+              <span class="topic-chip">📈 Workflows</span>
+              <span class="topic-chip">🧠 Memory & State</span>
+            </div>
+            <div class="btn-disabled-module">
+              🔒 Próximamente Disponible
+            </div>
+          </div>
+        </article>
+
+        <!-- MÓDULO 4 (PRÓXIMAMENTE) -->
+        <article class="module-card upcoming">
+          <div class="module-card-banner" style="background: radial-gradient(circle, #211938 0%, #0b0f19 80%); display: flex; align-items: center; justify-content: center;">
+            <div style="font-size: 3rem;">🏛️</div>
+            <span class="module-num-pill">MÓDULO 4</span>
+            <span class="module-status-badge upcoming-badge">🟡 PRÓXIMAMENTE</span>
+          </div>
+          <div class="module-card-body">
+            <div class="module-meta-row">
+              <span>⏱️ En Desarrollo</span>
+              <span>Nivel: Estratégico</span>
+            </div>
+            <h3>Módulo 4: Gobernanza Corporativa, Evaluación y Calidad de IA</h3>
+            <p>
+              Estrategia de adopción empresarial de IA: marcos de evaluación cuantitativa (Evals), observabilidad de costos/tokens, auditoría de sesgos, seguridad adversarial (Red Teaming) y justificación de casos de negocio (ROI).
+            </p>
+            <div class="module-topics-tags">
+              <span class="topic-chip">📊 Quality Evals</span>
+              <span class="topic-chip">🛡️ Seguridad & Red Teaming</span>
+              <span class="topic-chip">💼 Business Case ROI</span>
+              <span class="topic-chip">⚖️ Marcos Regulatorios</span>
+            </div>
+            <div class="btn-disabled-module">
+              🔒 Próximamente Disponible
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         METODOLOGÍA DE ESTUDIO
+         ==================================================================== -->
+    <section>
+      <div class="section-heading-box">
+        <div>
+          <h2>💡 Metodología de Aprendizaje Activo</h2>
+          <p>Tres pilares para construir criterio y autonomía técnica.</p>
+        </div>
+      </div>
+
+      <div class="methodology-grid">
+        <div class="methodology-card">
+          <span class="m-icon">🧭</span>
+          <h4>1. Misiones de Investigación</h4>
+          <p>No te damos definiciones masticadas. Cada tema incluye preguntas disparadoras y términos de búsqueda sugeridos para que abras tu IA en paralelo e investigues activamente.</p>
+        </div>
+
+        <div class="methodology-card">
+          <span class="m-icon">🎛️</span>
+          <h4>2. Laboratorios y Simuladores</h4>
+          <p>Interactúa con herramientas embebidas: probadores de prompts, clasificadores de gobernanza, calculadoras de RAM para modelos locales y visores de evidencia fáctica.</p>
+        </div>
+
+        <div class="methodology-card">
+          <span class="m-icon">💾</span>
+          <h4>3. Progreso Guardado Localmente</h4>
+          <p>Tu avance en secciones exploradas, reactivos de autoevaluación y checklists de dominio se almacenan directamente en tu navegador, sin necesidad de registro ni contraseñas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         AUTOR Y PROPIEDAD INTELECTUAL
+         ==================================================================== -->
+    <section>
+      <div class="author-spotlight-card">
+        <div class="author-content-flex">
+          <div class="author-avatar-large">MC</div>
+          <div class="author-text-details">
+            <h3>Marcos Cruz A.</h3>
+            <div class="author-role">AI Solutions, Enablement Specialist · Arquitectura de Negocio & Software Engineer</div>
+            <p>
+              Especialista en habilitación tecnológica y despliegue de soluciones de inteligencia artificial en organizaciones. Diseñador de este ecosistema de formación práctica para transformar el uso informal de la IA en capacidades sólidas de ingeniería de contexto, anclaje documental y soberanía de datos.
+            </p>
+          </div>
+        </div>
+
+        <div class="ip-banner-note">
+          <span>🛡️</span>
+          <span>
+            <strong>Aviso de Propiedad Intelectual:</strong> Este portal y sus guías interactivas están concebidos para el estudio y práctica autónoma del estudiante. Las diapositivas magistrales, metodología pedagógica y láminas maestras de clase son propiedad intelectual exclusiva de <strong>Marcos Cruz A.</strong> y están reservadas únicamente para uso docente del facilitador.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         FOOTER
+         ==================================================================== -->
+    <footer class="portal-footer">
+      <p style="font-weight: 700; color: #fff;">
+        Introducción a la Inteligencia Artificial · Guías de Estudio Interactivas
+      </p>
+      
+      <div class="portal-footer-links">
+        <a href="guia1_estudio_interactiva.html">Guía Módulo 1</a>
+        <a href="guia2_estudio_interactiva.html">Guía Módulo 2</a>
+        <a href="https://github.com/maarkman90/Introducci-n-a-la-IA--Gu-a-de-estudio" target="_blank" rel="noopener">Repositorio en GitHub</a>
+      </div>
+
+      <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 18px;">
+        © 2026 Marcos Cruz A. · Todos los derechos reservados. Diseñado para visualización óptima en dispositivos móviles y ordenadores.
+      </p>
+    </footer>
+
+  </main>
+
+  <!-- Lógica de Progreso del Portal -->
+  <script src="portal.js"></script>
+</body>
+
+</html>
