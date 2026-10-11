@@ -1916,8 +1916,33 @@ h1.hero-title {
     font-size: 0.78rem;
   }
 
+  .flashcards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timer-clock-display {
+    font-size: 1.8rem;
+  }
+
+  .code-box {
+    padding: 12px;
+    font-size: 0.8rem;
+  }
+
+  .classifier-buttons-row {
+    flex-direction: column;
+  }
+
   .btn-classify {
     width: 100%;
+  }
+
+  #btnNextScenario {
+    margin-left: 0 !important;
+  }
+
+  .audit-response-card {
+    padding: 14px;
   }
 
   .ram-selector-row {

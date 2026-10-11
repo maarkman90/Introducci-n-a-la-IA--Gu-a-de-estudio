@@ -465,7 +465,8 @@ body {
     background: var(--card);
     border: 1px solid var(--card-border);
     border-radius: var(--radius);
-    overflow: hidden;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     margin-bottom: 20px;
 }
 
@@ -716,4 +717,103 @@ tbody tr:not(:last-child) td {
 .block-section.in-view {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* ==========================================================================
+   ENHANCED MOBILE & TABLET RESPONSIVENESS (SMARTPHONES)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .wrap {
+        padding: 24px 16px 40px;
+    }
+
+    .progress-sticky {
+        padding: 8px 14px 0;
+    }
+
+    .progress-top-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .progress-brand {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .progress-stats {
+        width: 100%;
+        justify-content: space-between;
+        font-size: 0.76rem;
+    }
+
+    .hero {
+        padding: 24px 0 32px;
+    }
+
+    .hero h1 {
+        font-size: 1.85rem;
+    }
+
+    .block-section {
+        margin: 40px 0;
+    }
+
+    .block-sub {
+        margin-left: 0;
+        margin-top: 6px;
+        font-size: 0.9rem;
+    }
+
+    .table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table-wrap table {
+        min-width: 480px;
+    }
+
+    .flashcard {
+        height: auto;
+        min-height: 180px;
+    }
+
+    .search-term-row {
+        gap: 6px;
+    }
+
+    .search-term-chip {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 15px;
+    }
+
+    .concept-box {
+        padding: 16px;
+    }
+
+    .hero-note {
+        padding: 14px;
+        font-size: 0.88rem;
+    }
+
+    .quiz-box {
+        padding: 16px;
+    }
+
+    .quiz-opt {
+        padding: 10px 12px;
+        font-size: 0.86rem;
+    }
+
+    .checklist-item {
+        padding: 8px 0;
+    }
 }
