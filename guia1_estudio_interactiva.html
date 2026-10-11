@@ -2,421 +2,891 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía de Estudio Interactiva · Módulo 1: Introducción a la IA</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="guia_estudio.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Guía de Estudio Interactiva · Módulo 1: Entender la IA, LLMs, Prompting y Asistentes | Instructor: Marcos Cruz A.</title>
+  <meta name="description" content="Guía interactiva oficial del Módulo 1: de programación tradicional a modelos estadísticos, anatomía de LLMs, tokens, simulador de temperatura, interfaz vs modelo, asistentes y RAG.">
+  <meta name="author" content="Marcos Cruz A.">
+
+  <!-- Tipografía Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos Unificados Dark Editorial Tech -->
+  <link rel="stylesheet" href="guia_estudio_modulo2.css">
 </head>
 
 <body>
 
-    <div class="progress-sticky">
-        <div class="progress-top-row">
-            <div class="progress-brand">
-                <a href="index.html" style="color: var(--text-dim); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 2px 8px; border-radius: 6px; background: rgba(255,255,255,0.06); border: 1px solid var(--card-border); margin-right: 6px;">🏠 Portal</a>
-                <span class="logo-badge">MÓD. 1</span>
-                <span class="title">Guía de Estudio Autodidacta</span>
-                <a href="guia2_estudio_interactiva.html" style="color: var(--accent-3); font-size: 0.82rem; margin-left: 8px; text-decoration: none; font-weight: 600; padding: 2px 8px; border-radius: 6px; background: rgba(56,224,198,0.1); border: 1px solid rgba(56,224,198,0.25);">Ir a Módulo 2 ➡</a>
-            </div>
-            <div class="progress-stats">
-                <span>Explorados: <strong id="statExplored">0</strong>/<span id="statTotal">0</span></span>
-                <span>Quiz: <strong id="statQuiz">0</strong>%</span>
-                <span>Checklist: <strong id="statChecklist">0</strong>%</span>
-            </div>
+  <!-- ====================================================================
+       STICKY PROGRESS & NAV HEADER
+       ==================================================================== -->
+  <header class="progress-sticky">
+    <div class="progress-container-inner">
+      <div class="progress-top-row">
+        <div class="brand-badge-group">
+          <a href="index.html" class="nav-module-link" title="Volver al Portal de Módulos">🏠 Portal</a>
+          <span class="badge-tag">MÓDULO 1</span>
+          <span class="progress-title">Guía de Estudio del Alumno</span>
+          <a href="guia2_estudio_interactiva.html" class="nav-module-link" style="color: var(--accent-cyan);" title="Ir a la Guía del Módulo 2">Módulo 2 ➡</a>
         </div>
-        <div class="progress-bar-outer">
-            <div class="progress-bar-inner" id="progressBar"></div>
+        <div class="progress-stats">
+          <div class="stat-item">
+            <span>Explorados:</span>
+            <strong id="statExplored">0</strong>/<span id="statTotal">0</span>
+          </div>
+          <div class="stat-item">
+            <span>Quiz:</span>
+            <strong id="statQuiz">0</strong>%
+          </div>
+          <div class="stat-item">
+            <span>Checklist:</span>
+            <strong id="statChecklist">0</strong>%
+          </div>
         </div>
+      </div>
+      <div class="progress-bar-outer">
+        <div class="progress-bar-inner" id="progressBar"></div>
+      </div>
     </div>
+  </header>
 
-    <div class="nav-dots" id="navDots"></div>
+  <!-- Indicadores de Navegación Lateral (Desktop) -->
+  <nav class="nav-dots" id="navDots" aria-label="Navegación rápida de secciones"></nav>
 
-    <div class="wrap">
+  <!-- ====================================================================
+       MAIN WRAPPER
+       ==================================================================== -->
+  <main class="wrap">
 
-        <section class="hero">
-            <span class="eyebrow">Aprendizaje Activo · No memorización</span>
-            <h1>Descifrando la <span class="gradient-text">Inteligencia Artificial</span></h1>
-            <p class="lead">Esta guía no te da respuestas masticadas. Te da <strong>conceptos clave, preguntas
-                    disparadoras y pistas de búsqueda</strong> para que tú construyas el conocimiento investigando,
-                probando y conectando ideas por tu cuenta.</p>
-            <div class="hero-note">
-                <strong>Cómo usar esta guía:</strong> cada bloque tiene un concepto breve (lo esencial), una pregunta de
-                investigación (tu misión) y términos de búsqueda sugeridos. Abre un buscador o un chat de IA en paralelo
-                y ve resolviendo cada misión. Marca tu avance con el checklist final.
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+      <div class="hero-meta-row">
+        <span class="hero-tag">⚡ Cuaderno de Estudio del Alumno</span>
+        <span class="hero-author-badge">Instructor y Autor: <strong>Marcos Cruz A.</strong> · AI Solutions Specialist</span>
+        <span class="hero-tag" style="background: rgba(154,109,255,0.12); color: var(--accent-purple); border-color: rgba(154,109,255,0.25);">
+          🛡️ Propiedad Intelectual Registrada
+        </span>
+      </div>
+
+      <h1 class="hero-title">
+        Módulo 1: <span class="gradient-text">Entender la IA, LLMs,</span> Prompting y Asistentes
+      </h1>
+
+      <p class="hero-lead">
+        Descubre qué hay realmente dentro del motor de la Inteligencia Artificial moderna. Pasa de concebirla como magia a comprender su funcionamiento mecánico: <strong>de reglas lógicas a probabilidades estadísticas</strong>, anatomía de tokens y parámetros, control de temperatura, desacoplamiento entre interfaces y modelos, y diseño de asistentes personalizados.
+      </p>
+
+      <!-- Portada Visual del Módulo 1 -->
+      <div class="hero-media-card">
+        <img src="assets/cover.jpg" alt="Portada Módulo 1: Descifrando la Inteligencia Artificial" class="hero-cover-img" loading="eager">
+        <div class="hero-card-footer">
+          <div class="hero-caption">
+            <strong>Entorno Fundacional:</strong> Arquitectura neuronal de predicción de tokens, capas de software y asistentes RAG.
+          </div>
+          <div class="hero-stats-pills">
+            <span class="mini-pill">⏱️ ~60 Minutos</span>
+            <span class="mini-pill">🧠 Laboratorios en Vivo</span>
+            <span class="mini-pill">📱 Móvil y PC</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cuadro de Instrucciones Didácticas -->
+      <div class="guide-instructions">
+        <h3>🧭 Cómo sacar el máximo provecho a este material interactivo</h3>
+        <p>
+          Esta guía no te entrega respuestas memorísticas masticadas. Te proporciona <strong>conceptos nucleares, simuladores interactivos de parámetros, laboratorios de tokens y misiones de experimentación</strong>. Abre tu chat de IA favorito en paralelo y ve resolviendo cada misión práctica. Tu avance se guarda automáticamente.
+        </p>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         BLOQUE 1: EL CAMBIO DE PARADIGMA
+         ==================================================================== -->
+    <section class="block-section" id="s1">
+      <div class="block-head">
+        <span class="block-num">1</span>
+        <h2>El Cambio de Paradigma: De Reglas a Datos</h2>
+      </div>
+      <p class="block-sub">De programar condiciones explícitas (if-else) a entrenar modelos con ejemplos masivos.</p>
+
+      <!-- Asset Técnico: Cambio de Paradigma -->
+      <div class="block-media-showcase">
+        <div class="media-image-container">
+          <img src="assets/paradigm_shift.jpg" alt="Cambio de Paradigma: Programación Clásica vs Machine Learning" loading="lazy">
+          <span class="media-badge-overlay">Inversión Lógica</span>
+        </div>
+        <div class="media-caption-bar">
+          <span><strong>El Nuevo Paradigma:</strong> En lugar de codificar reglas a mano, alimentamos datos para inferir un modelo estadístico.</span>
+          <span style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.78rem;">MACHINE LEARNING</span>
+        </div>
+      </div>
+
+      <div class="concept-box">
+        <span class="ctag">Concepto Nuclear</span>
+        <p>
+          Durante 70 años, la computación operó bajo una fórmula rígida: <code>Reglas + Datos = Respuestas</code>. Si querías detectar spam o reconocer un rostro, debías escribir millones de líneas de condiciones lógicas que colapsaban ante cualquier variación del mundo real.
+        </p>
+        <p>
+          El <strong>Machine Learning</strong> invierte esta ecuación: <code>Datos + Respuestas Esperadas = Reglas (Modelo)</code>. El sistema analiza millones de ejemplos y ajusta conexiones internas hasta inferir sus propias funciones estadísticas, capaces de generalizar frente a datos nunca antes vistos.
+        </p>
+      </div>
+
+      <!-- Comparador Visual de Paradigma -->
+      <div class="diff-container">
+        <div class="diff-header-tabs">
+          <div class="diff-tab active" data-target="diff-paradigm-rules">⚙️ Programación Clásica (Reglas)</div>
+          <div class="diff-tab" data-target="diff-paradigm-ml">🧠 Aprendizaje Automático (Datos)</div>
+        </div>
+
+        <div class="diff-pane active" id="diff-paradigm-rules">
+          <div class="code-box">
+<span class="badge-mediocre">LÓGICA TRADICIONAL</span>
+// Intento de clasificar si una foto contiene un gato mediante reglas:
+if (pixeles[120][45].color == OREJA_TRIANGULAR) {
+    if (contar_bigotes(imagen) == 6) {
+        if (textura == PELO_SUAVE && detecta_cola(imagen)) {
+            return "Es un gato"; // ⚠️ Falla si el gato está dormido o de espaldas
+        }
+    }
+}
+// Imposible contemplar miles de millones de ángulos, luces y razas.
+          </div>
+          <p style="font-size: 0.85rem; color: var(--accent-rose); margin: 10px 0 0;">
+            ❌ <strong>Límite estructural:</strong> El programador humano es el cuello de botella. No podemos escribir reglas para patrones que nosotros mismos reconocemos por intuición visual o lingüística.
+          </p>
+        </div>
+
+        <div class="diff-pane" id="diff-paradigm-ml">
+          <div class="code-box">
+<span class="badge-pro">MACHINE LEARNING</span>
+// Enfoque basado en datos y redes neuronales:
+modelo = entrenar_red_neuronal(
+    dataset_10_millones_fotos_etiquetadas, 
+    optimizador = AdamW, 
+    loss = CrossEntropy
+);
+
+// El modelo ajusta billones de pesos (parámetros) internos.
+prediccion = modelo.clasificar(foto_nueva_desconocida);
+// Resultado: 99.4% Probabilidad de "Gato" (reconoce invariancia geométrica y textura)
+          </div>
+          <p style="font-size: 0.85rem; color: var(--accent-emerald); margin: 10px 0 0;">
+            ✅ <strong>Poder de generalización:</strong> La máquina aprende representaciones latentes de alta dimensión y se adapta a variaciones imprevistas.
+          </p>
+        </div>
+      </div>
+
+      <!-- Misión de Investigación 1 -->
+      <div class="accordion" data-id="acc1">
+        <div class="accordion-head">
+          <div class="ah-left">
+            <span class="ah-icon">🧭</span>
+            <h3>Misión 1: La analogía cotidiana del aprendizaje</h3>
+          </div>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p>
+            Abre tu chat de IA y pídele que te explique con una analogía del mundo real la diferencia entre un sistema de reglas explícitas y una red neuronal. Comprueba si utiliza el ejemplo de aprender a andar en bicicleta leyendo un manual vs. cayéndose y ajustando el equilibrio muscular con la práctica.
+          </p>
+          <div class="research-prompt">
+            <span class="rp-tag">Pregunta Disparadora para tu IA</span>
+            <p>"Explícame con una analogía sencilla por qué la visión por computadora fracasó con programación tradicional y triunfó con redes neuronales convolucionales y transformers."</p>
+          </div>
+          <div class="search-term-row">
+            <span class="search-term-chip">🔎 rule based systems vs machine learning</span>
+            <span class="search-term-chip">🔎 qué es un modelo estadístico explicacion simple</span>
+            <span class="search-term-chip">🔎 historia del perceptron a los transformers</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         BLOQUE 2: ANATOMÍA DE UN LLM
+         ==================================================================== -->
+    <section class="block-section" id="s2">
+      <div class="block-head">
+        <span class="block-num">2</span>
+        <h2>Anatomía de un LLM: Tokens, Parámetros y Temperatura</h2>
+      </div>
+      <p class="block-sub">Qué ocurre en las entrañas de modelos como GPT-4o, Gemini y Claude.</p>
+
+      <!-- Asset Técnico: Anatomía LLM -->
+      <div class="block-media-showcase">
+        <div class="media-image-container">
+          <img src="assets/llm_anatomy.jpg" alt="Anatomía de un Large Language Model" loading="lazy">
+          <span class="media-badge-overlay">Arquitectura Interna</span>
+        </div>
+        <div class="media-caption-bar">
+          <span><strong>El Motor Estadístico:</strong> Transformación de texto en tokens, cálculo de logits en capas de atención y muestreo con temperatura.</span>
+          <span style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.78rem;">PROBABILIDAD DEL SIGUIENTE TOKEN</span>
+        </div>
+      </div>
+
+      <div class="concept-box">
+        <span class="ctag">El Principio de Predicción</span>
+        <p>
+          Un <strong>Large Language Model (LLM)</strong> no almacena "ideas" como un cerebro humano ni "busca en una enciclopedia interna". En su núcleo más íntimo, es una función matemática de distribución de probabilidad: dada una secuencia de palabras previas, calcula cuál es el <strong>siguiente fragmento de texto (token) más verosímil</strong>.
+        </p>
+      </div>
+
+      <!-- SIMULADOR INTERACTIVO DE TEMPERATURA -->
+      <div class="temp-simulator-widget">
+        <div class="tool-header">
+          <h3>🌡️ Laboratorio en Vivo: El Control de Temperatura</h3>
+          <p>Mueve el control deslizante para observar cómo cambia la distribución de probabilidad del siguiente token para la frase: <em>"El cielo sobre la ciudad es [___]"</em></p>
+        </div>
+
+        <div class="temp-slider-control">
+          <div class="temp-slider-header">
+            <span style="font-size: 0.88rem; font-weight: 700; color: #fff;">Valor de Temperatura:</span>
+            <span class="temp-value-display" id="tempValDisplay">0.70</span>
+          </div>
+          <input type="range" id="tempSlider" class="temp-slider-input" min="0.0" max="1.5" step="0.05" value="0.70">
+        </div>
+
+        <!-- Barras de Probabilidades Dinámicas -->
+        <div class="temp-predictions-grid">
+          <div class="temp-prob-row">
+            <span class="token-word-label">"azul"</span>
+            <div class="prob-bar-container">
+              <div class="prob-bar-fill" id="probBar1" style="width: 70%;"></div>
             </div>
-        </section>
+            <span class="prob-percentage-label" id="probPct1">70%</span>
+          </div>
 
-        <!-- BLOQUE 1 -->
-        <section class="block-section" id="s1">
-            <div class="block-head"><span class="block-num">1</span>
-                <h2>El Cambio de Paradigma</h2>
+          <div class="temp-prob-row">
+            <span class="token-word-label">"despejado"</span>
+            <div class="prob-bar-container">
+              <div class="prob-bar-fill" id="probBar2" style="width: 18%;"></div>
             </div>
-            <p class="block-sub">De programar reglas a entrenar con datos.</p>
+            <span class="prob-percentage-label" id="probPct2">18%</span>
+          </div>
 
-            <div class="concept-box">
-                <span class="ctag">Concepto breve</span>
-                <p>Durante décadas la computación funcionó así: un humano escribe reglas explícitas (<em>if-else</em>) y
-                    la máquina las ejecuta. La IA moderna, especialmente el <em>Machine Learning</em>, invierte la
-                    lógica: le damos muchos ejemplos (datos) y el sistema <strong>infiere sus propias reglas</strong>
-                    (un modelo estadístico) para generalizar a casos nuevos.</p>
+          <div class="temp-prob-row">
+            <span class="token-word-label">"inmenso"</span>
+            <div class="prob-bar-container">
+              <div class="prob-bar-fill" id="probBar3" style="width: 8%;"></div>
             </div>
+            <span class="prob-percentage-label" id="probPct3">8%</span>
+          </div>
 
-            <div class="accordion" data-id="a1">
-                <div class="accordion-head">
-                    <div class="ah-left"><span class="ah-icon">🧭</span>
-                        <h3>Misión de investigación: Programación clásica vs. Aprendizaje</h3>
-                    </div><span class="chevron">▼</span>
-                </div>
-                <div class="accordion-body">
-                    <p>Investiga la diferencia entre un sistema basado en reglas (<em>rule-based</em>) y uno basado en
-                        aprendizaje automático. ¿Por qué un sistema de reglas fallaría al intentar reconocer gatos en
-                        fotos, mientras que uno entrenado con datos sí puede?</p>
-                    <div class="research-prompt">
-                        <span class="rp-tag">Pregúntale a una IA o busca</span>
-                        <p>"Explícame con una analogía cotidiana la diferencia entre programación tradicional y machine
-                            learning"</p>
-                    </div>
-                    <div class="search-term-row">
-                        <span class="search-term-chip">🔎 rule-based systems vs machine learning</span>
-                        <span class="search-term-chip">🔎 historia del machine learning</span>
-                        <span class="search-term-chip">🔎 qué es un modelo estadístico</span>
-                    </div>
-                </div>
+          <div class="temp-prob-row">
+            <span class="token-word-label">"verde" (Raro)</span>
+            <div class="prob-bar-container">
+              <div class="prob-bar-fill" id="probBar4" style="width: 4%; background: var(--accent-rose);"></div>
             </div>
-        </section>
+            <span class="prob-percentage-label" id="probPct4" style="color: var(--accent-rose);">4%</span>
+          </div>
+        </div>
 
-        <!-- BLOQUE 2 -->
-        <section class="block-section" id="s2">
-            <div class="block-head"><span class="block-num">2</span>
-                <h2>Anatomía de un LLM</h2>
-            </div>
-            <p class="block-sub">Qué hay realmente detrás de un chat como ChatGPT, Gemini o Claude.</p>
+        <div style="background: var(--bg-deep); padding: 14px 18px; border-radius: var(--radius-sm); border: 1px solid var(--card-border); margin-top: 14px;">
+          <p id="tempVerdictText" style="margin: 0; font-size: 0.88rem; color: var(--text-dim); line-height: 1.5;">
+            Calculando veredicto...
+          </p>
+        </div>
+      </div>
 
-            <div class="concept-box">
-                <span class="ctag">Concepto breve</span>
-                <p>Un <em>Large Language Model</em> (LLM) es una red neuronal entrenada con cantidades masivas de texto
-                    para predecir la siguiente palabra (o "token") más probable dada una secuencia previa. No "entiende"
-                    ni "piensa" como un humano: calcula probabilidades a partir de patrones estadísticos aprendidos del
-                    lenguaje.</p>
-            </div>
+      <!-- TOKENIZADOR INTERACTIVO EN VIVO -->
+      <div class="tokenizer-widget">
+        <div class="tool-header">
+          <h3>🔡 Tokenizador Interactivo y Estimador de Consumo</h3>
+          <p>Escribe cualquier frase en español o pulsa un preset para ver cómo el modelo la fragmenta en unidades mínimas (tokens) y calcula el costo:</p>
+        </div>
 
-            <div class="flashcard-grid" id="flashcards2">
-                <div class="flashcard">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-face flashcard-front"><span class="fc-icon">🔡</span>
-                            <h4>Token</h4><span class="fc-hint">Clic para revelar</span>
-                        </div>
-                        <div class="flashcard-face flashcard-back">
-                            <p>Unidad mínima de texto que procesa un modelo: puede ser una palabra, parte de una palabra
-                                o un signo. Investiga cómo un tokenizador divide "inteligencia artificial".</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flashcard">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-face flashcard-front"><span class="fc-icon">⚖️</span>
-                            <h4>Parámetros</h4><span class="fc-hint">Clic para revelar</span>
-                        </div>
-                        <div class="flashcard-face flashcard-back">
-                            <p>Valores numéricos internos ajustados durante el entrenamiento. Investiga qué significa
-                                que GPT-4 tenga "billones de parámetros" y por qué eso no garantiza que sea más
-                                "inteligente".</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flashcard">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-face flashcard-front"><span class="fc-icon">🎲</span>
-                            <h4>Alucinación</h4><span class="fc-hint">Clic para revelar</span>
-                        </div>
-                        <div class="flashcard-face flashcard-back">
-                            <p>Cuando el modelo genera información plausible pero falsa, porque está optimizado para
-                                sonar coherente, no para ser verídico. Busca un ejemplo real documentado.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flashcard">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-face flashcard-front"><span class="fc-icon">🌡️</span>
-                            <h4>Temperatura</h4><span class="fc-hint">Clic para revelar</span>
-                        </div>
-                        <div class="flashcard-face flashcard-back">
-                            <p>Parámetro que controla la aleatoriedad de las respuestas. Investiga qué pasa con
-                                temperatura 0 vs. temperatura 1.5 en la creatividad de las respuestas.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+          <button class="btn-classify btn-token-preset" data-sample="La inteligencia artificial no piensa, calcula la probabilidad del siguiente token.">Ejemplo 1: Técnico</button>
+          <button class="btn-classify btn-token-preset" data-sample="¿Cuánto presupuesto aprobó el comité para la modernización del sistema?">Ejemplo 2: Pregunta</button>
+          <button class="btn-classify btn-token-preset" data-sample="Supercalifragilisticoespialidoso e internacionalización">Ejemplo 3: Palabras Raras</button>
+        </div>
 
-            <div class="accordion" data-id="a2">
-                <div class="accordion-head">
-                    <div class="ah-left"><span class="ah-icon">🧭</span>
-                        <h3>Misión: ¿Predicción o comprensión?</h3>
-                    </div><span class="chevron">▼</span>
-                </div>
-                <div class="accordion-body">
-                    <p>Un debate activo en IA es si los LLM "entienden" el lenguaje o solo son máquinas de predicción
-                        estadística extremadamente sofisticadas. Investiga argumentos de ambos lados y forma tu propia
-                        postura.</p>
-                    <div class="search-term-row">
-                        <span class="search-term-chip">🔎 stochastic parrot debate</span>
-                        <span class="search-term-chip">🔎 transformer architecture explicada simple</span>
-                        <span class="search-term-chip">🔎 attention is all you need resumen</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <textarea id="tokenInput" class="token-input-area" placeholder="Escribe tu texto aquí para descomponerlo en tokens...">La inteligencia artificial no piensa, calcula la probabilidad del siguiente token.</textarea>
 
-        <!-- BLOQUE 3 -->
-        <section class="block-section" id="s3">
-            <div class="block-head"><span class="block-num">3</span>
-                <h2>Interfaz vs. Modelo</h2>
-            </div>
-            <p class="block-sub">No confundas la "app" con el "cerebro".</p>
+        <div style="font-size: 0.78rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 6px;">
+          Desglose Visual de Tokens (Colores Alternados):
+        </div>
+        <div class="tokenized-preview-box" id="tokenPreviewBox"></div>
 
-            <div class="concept-box">
-                <span class="ctag">Concepto breve</span>
-                <p>ChatGPT, Copilot y Gemini son <strong>interfaces</strong>: aplicaciones con una capa de producto
-                    (memoria, herramientas, moderación, UI) construidas sobre un <strong>modelo</strong> base (GPT-4o,
-                    Gemini, Claude). El mismo modelo puede exponerse en múltiples interfaces distintas, cada una con
-                    reglas y capacidades diferentes.</p>
-            </div>
+        <div class="token-metrics-row">
+          <div class="token-metric-pill">
+            <span>Tokens Totales:</span>
+            <strong id="liveTokenCount">0</strong>
+          </div>
+          <div class="token-metric-pill">
+            <span>Caracteres:</span>
+            <strong id="liveCharCount">0</strong>
+          </div>
+          <div class="token-metric-pill">
+            <span>Costo estimado (x1,000 llamadas API):</span>
+            <strong id="liveCostEstimate">$0.0000 USD</strong>
+          </div>
+        </div>
+      </div>
 
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Capa</th>
-                            <th>Qué es</th>
-                            <th>Ejemplo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Modelo</strong></td>
-                            <td>El motor estadístico entrenado</td>
-                            <td>GPT-4o, Gemini 1.5, Claude 3</td>
-                        </tr>
-                        <tr>
-                            <td><strong>API</strong></td>
-                            <td>Puerta de acceso programática al modelo</td>
-                            <td>OpenAI API, Vertex AI</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Interfaz / App</strong></td>
-                            <td>UI + memoria + herramientas + reglas de uso</td>
-                            <td>ChatGPT, Copilot, Gemini App</td>
-                        </tr>
-                    </tbody>
-                </table>
+      <!-- 4 Flashcards 3D de Conceptos Clave -->
+      <div class="flashcards-grid">
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-face flashcard-front">
+              <span class="fc-icon">🔡</span>
+              <h4>Token</h4>
+              <span class="fc-hint">Toca para voltear</span>
             </div>
+            <div class="flashcard-face flashcard-back">
+              <p>Unidad mínima de procesamiento de un LLM. Puede ser una palabra completa, una sílaba o un signo de puntuación. En español, 1,000 tokens equivalen aproximadamente a 750 palabras.</p>
+            </div>
+          </div>
+        </div>
 
-            <div class="accordion" data-id="a3">
-                <div class="accordion-head">
-                    <div class="ah-left"><span class="ah-icon">🧭</span>
-                        <h3>Misión: El mismo modelo, distintas respuestas</h3>
-                    </div><span class="chevron">▼</span>
-                </div>
-                <div class="accordion-body">
-                    <p>Investiga por qué el mismo modelo (ej. GPT-4) puede dar respuestas diferentes en ChatGPT vs. en
-                        Copilot vs. accedido directamente por API. ¿Qué papel juegan el "system prompt" y las políticas
-                        de la interfaz?</p>
-                    <div class="search-term-row">
-                        <span class="search-term-chip">🔎 system prompt qué es</span>
-                        <span class="search-term-chip">🔎 OpenAI API vs ChatGPT diferencias</span>
-                        <span class="search-term-chip">🔎 wrapper de IA definición</span>
-                    </div>
-                </div>
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-face flashcard-front">
+              <span class="fc-icon">⚖️</span>
+              <h4>Parámetros</h4>
+              <span class="fc-hint">Toca para voltear</span>
             </div>
-        </section>
+            <div class="flashcard-face flashcard-back">
+              <p>Valores numéricos internos (pesos sinápticos) calibrados durante el entrenamiento. Un modelo de 7B tiene 7 mil millones de parámetros; uno de 70B almacena patrones más densos pero requiere más memoria RAM.</p>
+            </div>
+          </div>
+        </div>
 
-        <!-- BLOQUE 4 -->
-        <section class="block-section" id="s4">
-            <div class="block-head"><span class="block-num">4</span>
-                <h2>Asistentes Personalizados (GPTs)</h2>
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-face flashcard-front">
+              <span class="fc-icon">📜</span>
+              <h4>Ventana de Contexto</h4>
+              <span class="fc-hint">Toca para voltear</span>
             </div>
-            <p class="block-sub">Configurar un modelo sin entrenarlo de nuevo.</p>
+            <div class="flashcard-face flashcard-back">
+              <p>Cantidad máxima de tokens (entrada + salida) que el modelo puede retener en memoria activa simultáneamente (ej. 128k en GPT-4o, 2 millones en Gemini 1.5 Pro). Todo lo que exceda esa ventana se olvida.</p>
+            </div>
+          </div>
+        </div>
 
-            <div class="concept-box">
-                <span class="ctag">Concepto breve</span>
-                <p>Un "GPT personalizado" o asistente a medida no entrena un nuevo modelo desde cero. En realidad
-                    envuelve el modelo base con <strong>instrucciones persistentes</strong> (un prompt de sistema
-                    detallado), <strong>conocimiento adicional</strong> (archivos de referencia) y a veces
-                    <strong>herramientas</strong> (búsqueda, código, APIs externas). Es personalización por
-                    configuración, no por reentrenamiento.
-                </p>
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-face flashcard-front">
+              <span class="fc-icon">🎲</span>
+              <h4>Alucinación</h4>
+              <span class="fc-hint">Toca para voltear</span>
             </div>
+            <div class="flashcard-face flashcard-back">
+              <p>Fenómeno en el que el modelo genera datos falsos o inexistentes con absoluta elocuencia y seguridad, porque está optimizado para maximizar la fluidez probabilística, no la verdad fáctica.</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            <div class="accordion" data-id="a4">
-                <div class="accordion-head">
-                    <div class="ah-left"><span class="ah-icon">🧭</span>
-                        <h3>Misión: Instrucciones vs. Fine-tuning</h3>
-                    </div><span class="chevron">▼</span>
-                </div>
-                <div class="accordion-body">
-                    <p>Investiga la diferencia entre crear un asistente con instrucciones personalizadas (prompt
-                        engineering) y hacer "fine-tuning" real de un modelo. ¿Cuándo tendría sentido cada enfoque?</p>
-                    <div class="research-prompt">
-                        <span class="rp-tag">Pregúntale a una IA o busca</span>
-                        <p>"¿Qué es RAG (Retrieval Augmented Generation) y cómo se relaciona con los GPTs
-                            personalizados?"</p>
-                    </div>
-                    <div class="search-term-row">
-                        <span class="search-term-chip">🔎 fine-tuning vs prompt engineering</span>
-                        <span class="search-term-chip">🔎 RAG retrieval augmented generation</span>
-                        <span class="search-term-chip">🔎 cómo crear un GPT personalizado</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <!-- Misión de Investigación 2 -->
+      <div class="accordion" data-id="acc2">
+        <div class="accordion-head">
+          <div class="ah-left">
+            <span class="ah-icon">🧭</span>
+            <h3>Misión 2: ¿Predicción o razonamiento genuino?</h3>
+          </div>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p>
+            Existe un debate abierto en las ciencias computacionales: ¿los LLMs son meros "loros estocásticos" que repiten patrones estadísticos o desarrollan modelos internos del mundo que constituyen una forma emergente de razonamiento?
+          </p>
+          <div class="search-term-row">
+            <span class="search-term-chip">🔎 stochastic parrots emily bender</span>
+            <span class="search-term-chip">🔎 transformer self attention mechanism</span>
+            <span class="search-term-chip">🔎 emergent abilities in large language models</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!-- BLOQUE 5 -->
-        <section class="block-section" id="s5">
-            <div class="block-head"><span class="block-num">5</span>
-                <h2>Límites y Fronteras del Prompt</h2>
-            </div>
-            <p class="block-sub">Lo que un prompt puede y no puede lograr.</p>
+    <!-- ====================================================================
+         BLOQUE 3: INTERFAZ VS MODELO
+         ==================================================================== -->
+    <section class="block-section" id="s3">
+      <div class="block-head">
+        <span class="block-num">3</span>
+        <h2>Interfaz vs. Modelo: No Confundas la App con el Cerebro</h2>
+      </div>
+      <p class="block-sub">El mismo motor de IA genera respuestas radicalmente distintas según la capa de producto que lo envuelve.</p>
 
-            <div class="concept-box">
-                <span class="ctag">Concepto breve</span>
-                <p>Un prompt bien diseñado puede guiar el tono, formato, rol y enfoque de un modelo, pero
-                    <strong>no puede</strong> otorgarle conocimiento que no estaba en sus datos de entrenamiento, ni
-                    eliminar sus sesgos estructurales, ni garantizar exactitud factual al 100%. Entender estas
-                    fronteras evita expectativas irreales y usos riesgosos.
-                </p>
-            </div>
+      <!-- Asset Técnico: Interfaz vs Modelo -->
+      <div class="block-media-showcase">
+        <div class="media-image-container">
+          <img src="assets/interface_vs_model.jpg" alt="Diferencia entre Interfaz y Modelo Base" loading="lazy">
+          <span class="media-badge-overlay">Capas de Software</span>
+        </div>
+        <div class="media-caption-bar">
+          <span><strong>Desacoplamiento Tecnológico:</strong> La aplicación (UI, memoria, moderación) no es el modelo base subyacente.</span>
+          <span style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.78rem;">MODELO ➡ API ➡ APLICACIÓN</span>
+        </div>
+      </div>
 
-            <div class="quiz-box">
-                <p class="quiz-q">🧠 Autoevaluación: ¿Cuál de estas afirmaciones es correcta?</p>
-                <button class="quiz-opt" data-correct="false">Un prompt perfecto puede eliminar por completo las
-                    alucinaciones de un LLM.</button>
-                <button class="quiz-opt" data-correct="true">Un prompt puede mejorar el formato y enfoque de la
-                    respuesta, pero no garantiza veracidad absoluta.</button>
-                <button class="quiz-opt" data-correct="false">Si le pides al modelo que "no invente nada", nunca
-                    volverá a alucinar.</button>
-                <div class="quiz-feedback"></div>
-            </div>
+      <div class="concept-box">
+        <span class="ctag">La Confusión Corporativa Más Común</span>
+        <p>
+          Muchos profesionales afirman: <em>"ChatGPT es tonto para mi empresa"</em> o <em>"Copilot no sabe programar"</em>. En realidad, están juzgando la <strong>interfaz de usuario</strong> (con sus políticas de moderación, límites de memoria y prompts de sistema ocultos), no la capacidad pura del <strong>modelo base</strong>.
+        </p>
+      </div>
 
-            <div class="accordion" data-id="a5">
-                <div class="accordion-head">
-                    <div class="ah-left"><span class="ah-icon">🧭</span>
-                        <h3>Misión: Diseña tu propio experimento</h3>
-                    </div><span class="chevron">▼</span>
-                </div>
-                <div class="accordion-body">
-                    <p>Abre un LLM y pídele información muy específica sobre un tema de nicho que probablemente no
-                        conozca bien (ej. un evento local reciente). Observa si "alucina" una respuesta convincente
-                        pero falsa. Documenta qué pasó y por qué crees que ocurrió.</p>
-                    <div class="search-term-row">
-                        <span class="search-term-chip">🔎 prompt engineering límites</span>
-                        <span class="search-term-chip">🔎 sesgos en modelos de lenguaje</span>
-                        <span class="search-term-chip">🔎 cómo verificar información generada por IA</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <!-- DESARMADOR DE CAPAS INTERACTIVO -->
+      <div class="layers-disassembler-widget">
+        <div class="tool-header">
+          <h3>🏗️ Desarmador de Capas: Haz clic en cada nivel</h3>
+          <p>Explora cómo se divide la pila tecnológica de una solución moderna de IA:</p>
+        </div>
 
-        <!-- GLOSARIO -->
-        <section class="block-section" id="s6">
-            <div class="block-head"><span class="block-num">6</span>
-                <h2>Glosario Rápido</h2>
+        <div class="layer-stack-list">
+          <div class="layer-interactive-card active" id="layerApp">
+            <div class="layer-card-top">
+              <span class="layer-card-title">📱 Capa 3: Interfaz / Aplicación (Lo que ve el usuario)</span>
+              <span class="layer-tag-pill">ChatGPT, Copilot, Gemini App</span>
             </div>
-            <p class="block-sub">Términos clave — profundiza cada uno por tu cuenta.</p>
-            <div class="glossary-grid">
-                <div class="glossary-term"><span class="gt-word">LLM</span><span class="gt-def">Large Language
-                        Model, modelo de lenguaje de gran escala.</span></div>
-                <div class="glossary-term"><span class="gt-word">Prompt</span><span class="gt-def">Instrucción o
-                        entrada de texto que se le da al modelo.</span></div>
-                <div class="glossary-term"><span class="gt-word">Fine-tuning</span><span class="gt-def">Reentrenar
-                        un modelo base con datos específicos.</span></div>
-                <div class="glossary-term"><span class="gt-word">RAG</span><span class="gt-def">Técnica que combina
-                        búsqueda de documentos con generación de texto.</span></div>
-                <div class="glossary-term"><span class="gt-word">Token</span><span class="gt-def">Unidad mínima de
-                        texto procesada por el modelo.</span></div>
-                <div class="glossary-term"><span class="gt-word">Alucinación</span><span class="gt-def">Respuesta
-                        generada que suena correcta pero es falsa.</span></div>
-                <div class="glossary-term"><span class="gt-word">API</span><span class="gt-def">Interfaz de
-                        programación para acceder a un modelo.</span></div>
-                <div class="glossary-term"><span class="gt-word">System Prompt</span><span class="gt-def">Instrucción
-                        base oculta que configura el comportamiento del modelo.</span></div>
+            <div class="layer-card-body-details">
+              • <strong>Responsabilidad:</strong> Renderizado web/móvil, historial de conversaciones, autenticación de usuarios, inyección de fecha actual, interfaz de adjuntar archivos y filtros de moderación de contenido.<br>
+              • <strong>El secreto:</strong> Incluye un <em>System Prompt</em> gigantesco redactado por los ingenieros de producto que condiciona cada respuesta antes de que tú escribas tu primer saludo.
             </div>
-        </section>
+          </div>
 
-        <!-- RECURSOS -->
-        <section class="block-section" id="s7">
-            <div class="block-head"><span class="block-num">7</span>
-                <h2>Recursos para Profundizar</h2>
+          <div class="layer-interactive-card" id="layerApi">
+            <div class="layer-card-top">
+              <span class="layer-card-title">🔌 Capa 2: API / Middleware (La puerta de integración)</span>
+              <span class="layer-tag-pill">OpenAI API, Vertex AI, Anthropic API</span>
             </div>
-            <p class="block-sub">Puntos de partida — no destinos finales. Sigue investigando desde aquí.</p>
-            <div class="resource-grid">
-                <a class="resource-card"
-                    href="https://www.youtube.com/results?search_query=transformer+neural+network+explained"
-                    target="_blank" rel="noopener">
-                    <span class="rc-icon">🎥</span>
-                    <h4>Video: Arquitectura Transformer</h4>
-                    <p>Busca explicaciones visuales sobre cómo funciona la atención en los transformers.</p>
-                    <span class="rc-link">Buscar en YouTube →</span>
-                </a>
-                <a class="resource-card" href="https://scholar.google.com/scholar?q=large+language+models+survey"
-                    target="_blank" rel="noopener">
-                    <span class="rc-icon">📄</span>
-                    <h4>Papers académicos sobre LLMs</h4>
-                    <p>Explora investigación formal y surveys recientes sobre modelos de lenguaje.</p>
-                    <span class="rc-link">Buscar en Google Scholar →</span>
-                </a>
-                <a class="resource-card" href="https://www.google.com/search?q=prompt+engineering+guide" target="_blank"
-                    rel="noopener">
-                    <span class="rc-icon">🧩</span>
-                    <h4>Guías de Prompt Engineering</h4>
-                    <p>Compara distintas guías y técnicas prácticas de diseño de prompts.</p>
-                    <span class="rc-link">Buscar en Google →</span>
-                </a>
-                <a class="resource-card"
-                    href="https://www.google.com/search?q=OpenAI+Google+Anthropic+documentacion+oficial" target="_blank"
-                    rel="noopener">
-                    <span class="rc-icon">📚</span>
-                    <h4>Documentación oficial</h4>
-                    <p>Revisa la documentación de OpenAI, Google DeepMind y Anthropic directamente de la fuente.</p>
-                    <span class="rc-link">Buscar documentación →</span>
-                </a>
+            <div class="layer-card-body-details">
+              • <strong>Responsabilidad:</strong> Enrutamiento programático, control de latencia, autenticación por API Key, gestión de cuotas de tokens, facturación por consumo y configuración de hiperparámetros (temperatura, top_p, stop sequences).<br>
+              • <strong>Poder:</strong> Permite conectar el modelo con bases de datos SQL, CRMs o código Python sin restricciones de interfaz de chat.
             </div>
-        </section>
+          </div>
 
-        <!-- CHECKLIST FINAL -->
-        <section class="block-section" id="s8">
-            <div class="block-head"><span class="block-num">✓</span>
-                <h2>Checklist de Dominio</h2>
+          <div class="layer-interactive-card" id="layerModel">
+            <div class="layer-card-top">
+              <span class="layer-card-title">🧠 Capa 1: Modelo Base (El motor neuronal)</span>
+              <span class="layer-tag-pill">GPT-4o, Claude 3.5 Sonnet, Llama 3.3</span>
             </div>
-            <p class="block-sub">Marca solo lo que realmente puedas explicar sin ver la guía.</p>
-            <div class="concept-box" id="checklistBox">
-                <label class="checklist-item"><input type="checkbox" data-k="c1"><span>Puedo explicar la diferencia
-                        entre programación tradicional y machine learning.</span></label>
-                <label class="checklist-item"><input type="checkbox" data-k="c2"><span>Puedo definir qué es un token
-                        y un parámetro en un LLM.</span></label>
-                <label class="checklist-item"><input type="checkbox" data-k="c3"><span>Puedo distinguir entre un
-                        modelo, una API y una interfaz de usuario.</span></label>
-                <label class="checklist-item"><input type="checkbox" data-k="c4"><span>Puedo explicar cómo se
-                        personaliza un asistente de IA sin reentrenar el modelo.</span></label>
-                <label class="checklist-item"><input type="checkbox" data-k="c5"><span>Puedo describir al menos dos
-                        límites reales de lo que un prompt puede lograr.</span></label>
-                <label class="checklist-item"><input type="checkbox" data-k="c6"><span>Puedo dar un ejemplo propio
-                        de una alucinación de IA y explicar por qué ocurrió.</span></label>
+            <div class="layer-card-body-details">
+              • <strong>Responsabilidad:</strong> Pesos neuronales estáticos entrenados con miles de millones de documentos. No tiene reloj, no sabe qué día es hoy ni quién es el usuario a menos que la capa superior se lo informe explícitamente.<br>
+              • <strong>Naturaleza:</strong> Es un archivo estático de matrices matemáticas que ejecuta inferencia de tensores en GPUs de alto rendimiento.
             </div>
-        </section>
+          </div>
+        </div>
+      </div>
 
-        <footer class="site-footer">
-            <p>Guía de estudio interactiva · Módulo 1: Introducción a la IA</p>
-            <p class="footer-sign">Elaborado por <strong>Marcos Cruz A.</strong> · AI Solutions, Enablement Specialist ·
-                Arquitectura de Negocio & Software Engineer</p>
-        </footer>
+      <!-- Misión de Investigación 3 -->
+      <div class="accordion" data-id="acc3">
+        <div class="accordion-head">
+          <div class="ah-left">
+            <span class="ah-icon">🧭</span>
+            <h3>Misión 3: El mismo modelo, respuestas opuestas</h3>
+          </div>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p>
+            Investiga por qué formularle la misma pregunta a GPT-4 a través de la interfaz web de ChatGPT produce un tono conversacional y largo, mientras que la misma consulta vía API con un System Prompt estricto devuelve una respuesta de 5 palabras en formato JSON puro.
+          </p>
+          <div class="search-term-row">
+            <span class="search-term-chip">🔎 system prompt qué es</span>
+            <span class="search-term-chip">🔎 chatgpt vs openai api diferencias tecnicas</span>
+            <span class="search-term-chip">🔎 wrapper de inteligencia artificial definicion</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    </div>
+    <!-- ====================================================================
+         BLOQUE 4: ASISTENTES PERSONALIZADOS Y RAG
+         ==================================================================== -->
+    <section class="block-section" id="s4">
+      <div class="block-head">
+        <span class="block-num">4</span>
+        <h2>Asistentes Personalizados y Técnicas de Aumento (RAG)</h2>
+      </div>
+      <p class="block-sub">Configurar conocimiento e instrucciones especializadas sin reentrenar el modelo.</p>
 
-    <script src="guia_estudio.js"></script>
+      <!-- Asset Técnico: Asistentes Personalizados -->
+      <div class="block-media-showcase">
+        <div class="media-image-container">
+          <img src="assets/custom_assistant.jpg" alt="Asistentes Personalizados y Arquitectura RAG" loading="lazy">
+          <span class="media-badge-overlay">Arquitectura RAG</span>
+        </div>
+        <div class="media-caption-bar">
+          <span><strong>Personalización por Configuración:</strong> Inyección de conocimiento dinámico en el contexto sin costos de reentrenamiento.</span>
+          <span style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.78rem;">RETRIEVAL AUGMENTED GENERATION</span>
+        </div>
+      </div>
+
+      <div class="concept-box">
+        <span class="ctag">El Mito del Reentrenamiento</span>
+        <p>
+          Crear un "GPT personalizado" o asistente corporativo no significa gastar millones de dólares reentrenando una red neuronal desde cero. Consiste en envolver el modelo base con tres componentes complementarios:
+        </p>
+        <ol style="margin: 0; padding-left: 20px; font-size: 0.94rem; color: var(--text-main);">
+          <li><strong>Instrucciones Persistentes (System Prompt):</strong> Reglas fijas de rol, formato y restricciones.</li>
+          <li><strong>Conocimiento Adicional (RAG):</strong> Búsqueda semántica en PDFs o manuales que se inyectan en la ventana de contexto.</li>
+          <li><strong>Herramientas (Tools / Function Calling):</strong> Habilidad de consultar APIs, ejecutar código o buscar en internet.</li>
+        </ol>
+      </div>
+
+      <!-- MATRIZ DE DECISIÓN INTERACTIVA (PROMPT VS RAG VS FINE-TUNING) -->
+      <div class="decision-tree-widget">
+        <div class="tool-header">
+          <h3>🧭 Árbol de Decisión: ¿Qué técnica necesita tu proyecto?</h3>
+          <p>Selecciona un problema de negocio real para conocer la arquitectura adecuada:</p>
+        </div>
+
+        <div class="decision-options-row">
+          <button class="btn-decision-scenario active" data-scenario="doc_qa">📄 Manuales de 200 Páginas</button>
+          <button class="btn-decision-scenario" data-scenario="json_format">📊 Respuestas en JSON Estricto</button>
+          <button class="btn-decision-scenario" data-scenario="medical_dialect">🩺 Jerga Médica / Hospital</button>
+          <button class="btn-decision-scenario" data-scenario="live_account">💳 Consultar Saldo Bancario</button>
+        </div>
+
+        <div class="decision-solution-card">
+          <h4 id="decisionSolutionTitle" style="margin: 0 0 8px; color: var(--accent-cyan); font-size: 1.05rem;">
+            Solución Recomendada: RAG (Retrieval Augmented Generation)
+          </h4>
+          <p id="decisionSolutionReason" style="margin: 0; font-size: 0.9rem; color: var(--text-dim); line-height: 1.55;">
+            Las políticas cambian frecuentemente y ocupan cientos de páginas. Entrenar el modelo (Fine-Tuning) sería costoso y propenso a desactualizarse. RAG busca los fragmentos exactos en el PDF en tiempo real y cita las páginas precisas sin alterar los pesos del modelo.
+          </p>
+        </div>
+      </div>
+
+      <!-- Misión de Investigación 4 -->
+      <div class="accordion" data-id="acc4">
+        <div class="accordion-head">
+          <div class="ah-left">
+            <span class="ah-icon">🧭</span>
+            <h3>Misión 4: ¿Cómo funciona un índice vectorial en RAG?</h3>
+          </div>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p>
+            Investiga qué es un <em>embedding</em> (representación numérica del significado de una frase) y cómo una base de datos vectorial permite encontrar párrafos relevantes por similitud semántica en lugar de coincidencia exacta de palabras clave.
+          </p>
+          <div class="search-term-row">
+            <span class="search-term-chip">🔎 embeddings explicados simple</span>
+            <span class="search-term-chip">🔎 vector database pinecone chroma</span>
+            <span class="search-term-chip">🔎 rag vs fine-tuning diferencias clave</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         BLOQUE 5: LÍMITES DEL PROMPT Y ALUCINACIONES
+         ==================================================================== -->
+    <section class="block-section" id="s5">
+      <div class="block-head">
+        <span class="block-num">5</span>
+        <h2>Fronteras del Prompt y Prevención de Alucinaciones</h2>
+      </div>
+      <p class="block-sub">Comprender los límites reales de la tecnología para evitar falsas expectativas y riesgos legales.</p>
+
+      <!-- Asset Técnico: Límites del Prompt -->
+      <div class="block-media-showcase">
+        <div class="media-image-container">
+          <img src="assets/prompt_boundaries.jpg" alt="Fronteras y Límites de la Ingeniería de Prompts" loading="lazy">
+          <span class="media-badge-overlay">Límites Estructurales</span>
+        </div>
+        <div class="media-caption-bar">
+          <span><strong>Fronteras Factuales:</strong> Un prompt no otorga memoria que no existía en el entrenamiento ni elimina sesgos por decreto.</span>
+          <span style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.78rem;">GUARDA-RAÍLES FACTUALES</span>
+        </div>
+      </div>
+
+      <div class="concept-box">
+        <span class="ctag">Lo que el Prompt Puede y NO Puede Lograr</span>
+        <p>
+          Un prompt cuidadosamente diseñado puede modular el tono, estructurar el formato, asumir roles profesionales y filtrar ruido, pero <strong>NO PUEDE</strong>:
+        </p>
+        <ul style="margin: 0; padding-left: 20px; font-size: 0.94rem; color: var(--text-main);">
+          <li>Garantizar verdad factual al 100% (la alucinación es inherente a la naturaleza probabilística del modelo).</li>
+          <li>Acceder a eventos del mundo real posteriores a su fecha de corte de conocimiento (a menos que use búsqueda web).</li>
+          <li>Garantizar razonamiento aritmético o criptográfico complejo sin invocar un intérprete de código externo.</li>
+        </ul>
+      </div>
+
+      <!-- Misión de Investigación 5: El Experimento de Inducción de Alucinación -->
+      <div class="accordion" data-id="acc5">
+        <div class="accordion-head">
+          <div class="ah-left">
+            <span class="ah-icon">🧭</span>
+            <h3>Misión 5: Provoca y diagnostica una alucinación</h3>
+          </div>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p>
+            Formula una pregunta sobre un hecho ficticio o una combinación improbable de eventos reales. Por ejemplo: <em>"Explícame las conclusiones del Tratado de Paz de Lisboa de 1984 entre Noruega y Suiza."</em> Observa cómo el modelo, si no tiene herramientas de búsqueda activas, genera una explicación histórica impecablemente redactada, con nombres de diplomáticos verosímiles pero 100% inventada.
+          </p>
+          <div class="research-prompt">
+            <span class="rp-tag">Pregunta de Reflexión</span>
+            <p>"¿Por qué pedirle a una IA 'sé completamente verídico y no inventes nada' no es suficiente para evitar una alucinación?"</p>
+          </div>
+          <div class="search-term-row">
+            <span class="search-term-chip">🔎 por que alucinan los llms</span>
+            <span class="search-term-chip">🔎 hallucination evaluation benchmarks</span>
+            <span class="search-term-chip">🔎 grounding vs ungrounded generation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         BLOQUE 6: GLOSARIO TÉCNICO 3D (FLASHCARDS FLIP)
+         ==================================================================== -->
+    <section class="block-section" id="s6">
+      <div class="block-head">
+        <span class="block-num">6</span>
+        <h2>Glosario Técnico de Fundamentos</h2>
+      </div>
+      <p class="block-sub">Toca o haz clic sobre cada tarjeta para girarla y repasar los términos.</p>
+
+      <div class="flashcards-grid">
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-face flashcard-front">
+              <span class="fc-icon">🧠</span>
+              <h4>LLM</h4>
+              <span class="fc-hint">Toca para voltear</span>
+            </div>
+            <div class="flashcard-face flashcard-back">
+              <p>Large Language Model: red neuronal profunda (arquitectura Transformer) entrenada con cientos de miles de millones de palabras para predecir secuencias de texto.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-face flashcard-front">
+              <span class="fc-icon">💬</span>
+              <h4>Prompt</h4>
+              <span class="fc-hint">Toca para voltear</span>
+            </div>
+            <div class="flashcard-face flashcard-back">
+              <p>Instrucción de entrada o estímulo contextual que recibe el modelo para condicionar y guiar la predicción de su respuesta final.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-face flashcard-front">
+              <span class="fc-icon">🔧</span>
+              <h4>Fine-Tuning</h4>
+              <span class="fc-hint">Toca para voltear</span>
+            </div>
+            <div class="flashcard-face flashcard-back">
+              <p>Proceso de reentrenar ligeramente los pesos de un modelo ya entrenado utilizando un dataset especializado para alterar su estilo o dominio.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-face flashcard-front">
+              <span class="fc-icon">📚</span>
+              <h4>RAG</h4>
+              <span class="fc-hint">Toca para voltear</span>
+            </div>
+            <div class="flashcard-face flashcard-back">
+              <p>Retrieval-Augmented Generation: arquitectura que busca fragmentos en una base de documentos y los inyecta en el prompt antes de generar la respuesta.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-face flashcard-front">
+              <span class="fc-icon">🔌</span>
+              <h4>API</h4>
+              <span class="fc-hint">Toca para voltear</span>
+            </div>
+            <div class="flashcard-face flashcard-back">
+              <p>Application Programming Interface: canal programático que permite a un software comunicarse directamente con el modelo sin pasar por una UI web.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-face flashcard-front">
+              <span class="fc-icon">🛡️</span>
+              <h4>System Prompt</h4>
+              <span class="fc-hint">Toca para voltear</span>
+            </div>
+            <div class="flashcard-face flashcard-back">
+              <p>Directriz base y oculta que define la personalidad, límites, restricciones y rol que el modelo debe respetar en toda la interacción.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         BLOQUE 7: AUTOEVALUACIÓN PRÁCTICA (QUIZZES SITUACIONALES)
+         ==================================================================== -->
+    <section class="block-section" id="s7">
+      <div class="block-head">
+        <span class="block-num">7</span>
+        <h2>Autoevaluación Práctica</h2>
+      </div>
+      <p class="block-sub">Evalúa tu criterio técnico antes de avanzar al Módulo 2.</p>
+
+      <!-- Quiz 1 -->
+      <div class="quiz-box">
+        <p class="quiz-q">1. ¿Cuál es la diferencia fundamental entre la programación tradicional y el Machine Learning?</p>
+        <button class="quiz-opt" data-correct="false">La programación tradicional usa Python y el Machine Learning solo usa Excel.</button>
+        <button class="quiz-opt" data-correct="true">En programación tradicional un humano escribe reglas explícitas; en Machine Learning el sistema infiere reglas a partir de datos y ejemplos.</button>
+        <button class="quiz-opt" data-correct="false">La programación tradicional no comete errores y los LLMs nunca fallan en operaciones matemáticas.</button>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <!-- Quiz 2 -->
+      <div class="quiz-box">
+        <p class="quiz-q">2. Si deseas que un modelo genere respuestas deterministas y exactas para extraer datos en formato JSON, ¿qué temperatura debes configurar?</p>
+        <button class="quiz-opt" data-correct="true">Temperatura cercana a 0 (ej. 0.0 o 0.1) para forzar la selección de los tokens más probables y eliminar aleatoriedad.</button>
+        <button class="quiz-opt" data-correct="false">Temperatura máxima de 1.5 para que la IA sea lo más creativa posible.</button>
+        <button class="quiz-opt" data-correct="false">La temperatura no afecta la aleatoriedad, solo la velocidad en la que responde la API.</button>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <!-- Quiz 3 -->
+      <div class="quiz-box">
+        <p class="quiz-q">3. Un colega dice: "GPT-4 no sirve para nuestra empresa porque ChatGPT web no conoce nuestro catálogo interno de productos". ¿Cuál es el error técnico en su afirmación?</p>
+        <button class="quiz-opt" data-correct="false">Ninguno, el modelo GPT-4 es incapaz de procesar catálogos empresariales.</button>
+        <button class="quiz-opt" data-correct="true">Está confundiendo la interfaz pública de ChatGPT con el modelo base; mediante RAG o un asistente personalizado se le puede suministrar el catálogo en tiempo real.</button>
+        <button class="quiz-opt" data-correct="false">Que debió pedirle a ChatGPT en inglés para que adivine el catálogo.</button>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <!-- Quiz 4 -->
+      <div class="quiz-box">
+        <p class="quiz-q">4. ¿Por qué un prompt perfecto no puede eliminar por completo el riesgo de alucinación?</p>
+        <button class="quiz-opt" data-correct="true">Porque los LLMs son motores de predicción probabilística de tokens optimizados para sonar fluidos y coherentes, no bases de datos de verdades absolutas.</button>
+        <button class="quiz-opt" data-correct="false">Porque las empresas de IA cobran extra para desactivar las alucinaciones.</button>
+        <button class="quiz-opt" data-correct="false">Porque el teclado de la computadora introduce interferencias en los tensores neuronales.</button>
+        <div class="quiz-feedback"></div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         BLOQUE 8: CHECKLIST DE DOMINIO PROFESIONAL
+         ==================================================================== -->
+    <section class="block-section" id="s8">
+      <div class="block-head">
+        <span class="block-num">✓</span>
+        <h2>Checklist de Dominio Profesional</h2>
+      </div>
+      <p class="block-sub">Marca únicamente los hitos que puedas explicar o resolver sin consultar la guía.</p>
+
+      <div class="checklist-container">
+        <label class="checklist-item">
+          <input type="checkbox" data-k="m1_c1">
+          <span>Puedo explicar con una analogía clara la diferencia entre programación clásica y machine learning.</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox" data-k="m1_c2">
+          <span>Sé qué es un token y cómo influye en la longitud de entrada y en la facturación por API.</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox" data-k="m1_c3">
+          <span>Comprendo qué hace la temperatura y cuándo usar T=0 vs T=0.7 vs T=1.2.</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox" data-k="m1_c4">
+          <span>Distingo con claridad la diferencia entre un modelo base, una API y una aplicación/interfaz.</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox" data-k="m1_c5">
+          <span>Sé explicar por qué crear un asistente personalizado no implica reentrenar una red neuronal.</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox" data-k="m1_c6">
+          <span>Entiendo qué es la arquitectura RAG y cuándo es preferible frente al Fine-Tuning.</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox" data-k="m1_c7">
+          <span>Reconozco los límites reales de lo que un prompt puede y no puede lograr.</span>
+        </label>
+        <label class="checklist-item">
+          <input type="checkbox" data-k="m1_c8">
+          <span>Sé cómo diagnosticar una alucinación y qué salvaguardas arquitectónicas utilizar para mitigarla.</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         BLOQUE 9: RECURSOS OFICIALES PARA PROFUNDIZAR
+         ==================================================================== -->
+    <section class="block-section" id="s9">
+      <div class="block-head">
+        <span class="block-num">📚</span>
+        <h2>Recursos Oficiales para Profundizar</h2>
+      </div>
+      <p class="block-sub">Fuentes seleccionadas de la industria para seguir explorando.</p>
+
+      <div class="resources-grid">
+        <a href="https://platform.openai.com/tokenizer" target="_blank" rel="noopener" class="resource-card">
+          <span class="resource-icon">🔤</span>
+          <h4>OpenAI Tokenizer Oficial</h4>
+          <p>Herramienta visual para experimentar con el tokenizador byte-pair encoding (cl100k_base y o200k_base).</p>
+          <span class="resource-link-arrow">platform.openai.com →</span>
+        </a>
+
+        <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener" class="resource-card">
+          <span class="resource-icon">📄</span>
+          <h4>Paper "Attention Is All You Need"</h4>
+          <p>El artículo fundacional de Google Brain (2017) que introdujo la arquitectura Transformer en el mundo.</p>
+          <span class="resource-link-arrow">arxiv.org →</span>
+        </a>
+
+        <a href="https://www.promptingguide.ai/es" target="_blank" rel="noopener" class="resource-card">
+          <span class="resource-icon">🧩</span>
+          <h4>Guía de Prompt Engineering</h4>
+          <p>Compendio exhaustivo de técnicas de Few-Shot, Chain-of-Thought, ReAct y calibración de respuestas.</p>
+          <span class="resource-link-arrow">promptingguide.ai →</span>
+        </a>
+
+        <a href="https://cloud.google.com/vertex-ai" target="_blank" rel="noopener" class="resource-card">
+          <span class="resource-icon">☁️</span>
+          <h4>Google Cloud Vertex AI</h4>
+          <p>Documentación técnica de acceso por API, parámetros de temperatura y grounding con Google Search.</p>
+          <span class="resource-link-arrow">cloud.google.com →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         FOOTER & AUTORÍA
+         ==================================================================== -->
+    <footer class="site-footer">
+      <p style="font-weight: 700; color: #fff; font-size: 0.95rem;">Guía de Estudio Oficial para Alumnos · Módulo 1</p>
+      <p style="color: var(--text-dim); font-size: 0.85rem;">Entender la IA, LLMs, Prompting y Asistentes</p>
+      
+      <div class="footer-author-box">
+        <div class="author-avatar-badge">MC</div>
+        <div class="author-info">
+          <h4>Propiedad Intelectual y Autoría: Marcos Cruz A.</h4>
+          <p>AI Solutions, Enablement Specialist · Arquitectura de Negocio & Software Engineer</p>
+        </div>
+      </div>
+
+      <p style="margin-top: 22px; font-size: 0.78rem; color: var(--text-muted); max-width: 760px; margin-left: auto; margin-right: auto; line-height: 1.55;">
+        © Todos los derechos reservados. Este cuaderno de trabajo interactivo ha sido desarrollado exclusivamente para el repaso personal y estudio autónomo del estudiante. La presentación ejecutiva, metodología didáctica y láminas maestras de clase son propiedad intelectual exclusiva de <strong>Marcos Cruz A.</strong> y están reservadas únicamente para uso docente del facilitador.
+      </p>
+    </footer>
+
+  </main>
+
+  <!-- Lógica Interactiva del Módulo 1 -->
+  <script src="guia_estudio.js"></script>
 </body>
 
 </html>

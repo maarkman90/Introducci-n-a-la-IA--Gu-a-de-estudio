@@ -1954,3 +1954,273 @@ h1.hero-title {
   from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* ==========================================================================
+   INTERACTIVE MODULE 1 WIDGETS (TEMPERATURE, TOKENIZER, LAYERS, DECISION TREE)
+   ========================================================================== */
+.temp-simulator-widget,
+.tokenizer-widget,
+.layers-disassembler-widget,
+.decision-tree-widget {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.temp-slider-control {
+  margin: 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.temp-slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.temp-value-display {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  background: rgba(56, 224, 198, 0.1);
+  padding: 3px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(56, 224, 198, 0.3);
+}
+
+.temp-slider-input {
+  width: 100%;
+  accent-color: var(--accent-cyan);
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.temp-predictions-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.temp-prob-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-deep);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--card-border);
+}
+
+.token-word-label {
+  width: 110px;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.prob-bar-container {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.prob-bar-fill {
+  height: 100%;
+  background: var(--grad-cyan-blue);
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+.prob-percentage-label {
+  width: 50px;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+/* Tokenizer Sandbox */
+.token-input-area {
+  width: 100%;
+  background: var(--bg-deep);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  color: var(--text-main);
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  outline: none;
+  resize: vertical;
+  min-height: 75px;
+  margin-bottom: 12px;
+}
+
+.token-input-area:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 2px rgba(56, 224, 198, 0.2);
+}
+
+.tokenized-preview-box {
+  background: #05070d;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  min-height: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.token-chip-badge {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.token-chip-badge:nth-child(4n+1) { background: rgba(56, 224, 198, 0.18); color: #a7f3d0; border: 1px solid rgba(56, 224, 198, 0.4); }
+.token-chip-badge:nth-child(4n+2) { background: rgba(109, 139, 255, 0.18); color: #c7d2fe; border: 1px solid rgba(109, 139, 255, 0.4); }
+.token-chip-badge:nth-child(4n+3) { background: rgba(154, 109, 255, 0.18); color: #e9d5ff; border: 1px solid rgba(154, 109, 255, 0.4); }
+.token-chip-badge:nth-child(4n+4) { background: rgba(255, 184, 109, 0.18); color: #fde68a; border: 1px solid rgba(255, 184, 109, 0.4); }
+
+.token-metrics-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.token-metric-pill {
+  background: var(--bg-deep);
+  border: 1px solid var(--card-border);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+
+.token-metric-pill strong {
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+}
+
+/* Layers Disassembler */
+.layer-stack-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.layer-interactive-card {
+  background: var(--bg-deep);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border-left: 4px solid var(--card-border);
+}
+
+.layer-interactive-card:hover {
+  background: var(--card-bg-elevated);
+}
+
+.layer-interactive-card.active {
+  border-left-color: var(--accent-cyan);
+  background: rgba(56, 224, 198, 0.06);
+  border-color: rgba(56, 224, 198, 0.3);
+}
+
+.layer-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.layer-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.layer-tag-pill {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-dim);
+}
+
+.layer-card-body-details {
+  margin-top: 10px;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+  display: none;
+}
+
+.layer-interactive-card.active .layer-card-body-details {
+  display: block;
+}
+
+/* Decision Tree: Prompt vs RAG vs Fine-tuning */
+.decision-options-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 14px 0 18px;
+}
+
+.btn-decision-scenario {
+  flex: 1;
+  min-width: 140px;
+  background: var(--bg-soft);
+  border: 1px solid var(--card-border);
+  color: var(--text-dim);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.btn-decision-scenario:hover {
+  color: #fff;
+  border-color: var(--accent-blue);
+}
+
+.btn-decision-scenario.active {
+  background: var(--accent-blue);
+  color: #050811;
+  border-color: var(--accent-blue);
+  font-weight: 700;
+}
+
+.decision-solution-card {
+  background: var(--bg-deep);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+}
